@@ -10,13 +10,13 @@ class SeoService
 	// MEMO: コンストラクタで基本設定を確定
 	public function __construct()
 	{
-		$this->baseUrl = 'https://example.com';	// ← あとで .env などに逃がす
+		$this->baseUrl = $_ENV['SITE_URL'];
 		$this->defaults = [
-			'siteName'    => 'サイト名',
-			'title'       => '',
-			'description' => '基本の説明文',
+			'siteName'    => '手ごねパンが基礎から学べる埼玉のTSUKIパン教室',
+			'title'       => 'TSUKIパン教室 - 手ごねパンが基礎から学べる教室 - 埼玉県熊谷市',
+			'description' => '埼玉県熊谷市 熊谷駅より車で10分国産小麦を使用した手ごねパン教室です。女性限定の少人数制で基礎から手ごねパンが学べますので初心者の方も安心して通って頂けます。',
 			'path'        => null,				// 明示されなければ現在リクエストから拾う
-			'ogImage'     => $this->baseUrl . '/assets/ogp-default.jpg',
+			'ogImage'     => $this->baseUrl . '/img/og-image.webp',
 			'type'        => 'website',
 		];
 	}
@@ -50,14 +50,7 @@ class SeoService
 			$seo['title'] .= ' | ' . $this->defaults['siteName'];
 		}
 
-		// MEMO: 👇 structuredData が渡されていなかったら、デフォルトで WebPage を出す
-		// if (!isset($seo['structuredData'])) {
-		// 	$seo['structuredData'] = [
-		// 		'@context' => 'https://schema.org',
-		// 		'@type'    => 'WebPage',
-		// 		'name'     => $seo['title'], // 整形後のタイトル
-		// 	];
-		// }
+
 		// MEMO: --- structuredData のデフォルト設定と上書き処理 ---
 		$defaultStructuredData = [
 			'@context' => 'https://schema.org',
@@ -66,7 +59,6 @@ class SeoService
 		];
 
 		// MEMO: structuredDataが渡されていたらマージ（上書き＆追加）
-		// var_dump($overrides); // ★デバッグ用
 		if (isset($overrides['structuredData']) && is_array($overrides['structuredData'])) {
 			$seo['structuredData'] = array_replace_recursive(
 				$defaultStructuredData,

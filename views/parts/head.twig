@@ -1,11 +1,17 @@
 {# views/parts/head.twig #}
 <meta charset="UTF-8">
-<title>{{ seo.title ?? 'サイトタイトル' }}</title>
-<meta name="description" content="{{ seo.description ?? '基本の説明文' }}">
-<link rel="canonical" href="{{ seo.canonical ?? '' }}">
+<title>{{ seo.title ?? 'TSUKIパン教室' }}</title>
+<meta name="description" content="{{ seo.description ?? '埼玉県熊谷市 熊谷駅より車で10分国産小麦を使用した手ごねパン教室です。' }}">
+<meta name="keywords" content="パン教室,埼玉,熊谷,初心者,体験レッスン,1Dayレッスン,手ごねパン,女性限定">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+<meta name="robots" content="index,follow">
+<meta name="author" content="TSUKIパン教室">
+<meta name="format-detection" content="telephone=no">
+<link rel="start" href="https://www.tsukipan.site" title="Home">
+<link rel="help" href="https://www.tsukipan.site/contact" title="お問い合わせ">
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<link rel="canonical" href="{{ seo.canonical ?? '' }}">
 
-{# 余裕があれば（無ければ後回しでOK） #}
 {% if seo %}
 <meta property="og:title" content="{{ seo.title }}">
 <meta property="og:description" content="{{ seo.description ?? '基本の説明文' }}">
@@ -24,15 +30,5 @@
 )|raw }}
 </script>
 {% endif %}
-
-<style>
-.pagination ul {
-	list-style: none;
-	padding: 0;
-	display: flex;
-	gap: 8px;
-}
-</style>
-
 
 <!-- <link rel="stylesheet" href="/common/css/style.css"> -->
