@@ -1,0 +1,300 @@
+{% extends 'layout.twig' %}
+
+{% block content %}
+
+<h1>Twigの基本的な使い方サンプル集</h1>
+
+<hr>
+
+{# SECTION: データ処理系 #}
+<h2>1. データ処理系</h2>
+
+{# MEMO: 受け取ったメッセージデータを表示 #}
+<h3>1-1.ルーターから受け渡されたメッセージ：</h3>
+<p>{{ message }}</p>
+
+{# MEMO: 配列をループ #}
+<h3>1-2. Twig 内で配列を定義する</h3>
+{% set fruits = ['りんご', 'みかん', 'ぶどう'] %}
+<ul>
+	{% for f in fruits %}
+		<li>{{ loop.index }}: {{ f }}</li>
+	{% endfor %}
+</ul>
+
+{# MEMO: 連想配列を表示 #}
+<h3>1-3. 連想配列（オブジェクト）</h3>
+{% set user = {
+	name: 'オジサン',
+	age: 999,
+	admin: false
+} %}
+<p>{{ user.name }}（{{ user.age }}歳）</p>
+
+{# MEMO: オブジェクトをループで表示 #}
+<h3>1-4. ニュース風データを作る</h3>
+{% set newsList = [
+	{ title: '記事A', date: '2025-01-01', category: 'お知らせ' },
+	{ title: '記事B', date: '2025-01-02', category: 'ブログ' },
+	{ title: '記事C', date: '2025-01-03', category: 'コラム' }
+] %}
+{% for item in newsList %}
+	<p>
+		{{ loop.index }}.
+		{{ item.date }} - {{ item.title }}（{{ item.category }}）
+		{% if loop.first %} ←最初{% endif %}
+		{% if loop.last %} ←最後{% endif %}
+	</p>
+{% endfor %}
+
+{# MEMO: includeのテスト #}
+<h3>1-5. include + with テスト（部品化）</h3>
+{% set boxData = {
+	title: 'おすすめ記事',
+	items: ['A', 'B', 'C']
+} %}
+{% include 'components/sample_box.twig' with boxData %}
+
+<hr>
+
+{# SECTION: 条件分岐とループ #}
+<h2>2. 条件分岐とループ</h2>
+
+{# NOTE: 共通データ #}
+{% set items = ['A', 'B', 'C', 'D'] %}
+
+{# MEMO: 条件分岐とループの基本的な使い方 #}
+<h3>2-1. 条件分岐テスト</h3>
+{% set stock = 3 %}
+{% if stock > 0 %}
+	<p>在庫あり！</p>
+{% else %}
+	<p>在庫なし</p>
+{% endif %}
+
+{# MEMO: ループ + 条件 #}
+<h3>2-2. ループの基本機能（loop変数）</h3>
+<ul>
+{% for item in items %}
+	<li>
+		index: {{ loop.index }} / index0: {{ loop.index0 }}
+		→ {{ item }}
+		{% if loop.first %}（最初）{% endif %}
+		{% if loop.last %}（最後）{% endif %}
+	</li>
+{% endfor %}
+</ul>
+
+{# MEMO: ループ + 偶数・奇数の判定 #}
+<h3>2-3. 偶数・奇数の判定</h3>
+{% for item in items %}
+	<p>
+		{{ item }}:
+		{% if loop.index is even %}
+			偶数番
+		{% else %}
+			奇数番
+		{% endif %}
+	</p>
+{% endfor %}
+
+{# MEMO: ループ + 条件の組み合わせ（and, or, in） #}
+<h3>2-4. 条件の組み合わせ（and, or, in）</h3>
+{% for item in items %}
+	<p>
+		{{ item }}:
+		{% if item in ['A', 'C'] %}
+			AかCです。
+		{% elseif item == 'B' or item == 'D' %}
+			BかDです。
+		{% endif %}
+	</p>
+	<p>
+	{# andの例 #}
+	{% if item != 'A' and item != 'D' %}
+		<p>{{ item }}はAでもDでもありません。</p>
+	{% endif %}
+	</p>
+{% endfor %}
+
+{# MEMO: ループ + break / continue #}
+<h3>2-5. ループの break / continue</h3>
+<p>※ Slim の標準Twigでは break/continue が使えない場合がある</p>
+<h4>3つ目のループで終了（break）</h4>
+{# {% for item in items %}
+	{% if loop.index == 3 %}
+		{% break %}
+	{% endif %}
+	<p>{{ item }}</p>
+{% endfor %} #}
+{# FIXME: breakが使えないので、↓「slice」で代用 #}
+{% for item in items|slice(0, 2) %}
+	<p>{{ item }}</p>
+{% endfor %}
+
+<h4>Bだけスキップ（continue）</h4>
+{# {% for item in items %}
+	{% if item == 'B' %}
+		{% continue %}
+	{% endif %}
+	<p>{{ item }}</p>
+{% endfor %} #}
+{# FIXME: continue が使えないので、↓「何も出さない」で代用 #}
+{% for item in items %}
+	{% if item == 'B' %}
+		{# continue が使えないので、何も出さない #}
+	{% else %}
+		<p>{{ item }}</p>
+	{% endif %}
+{% endfor %}
+
+{# MEMO: 多次元配列ループ #}
+<h3>2-6. 多次元配列のループ</h3>
+{% set groups = [
+	{ title: 'フルーツ', list: ['りんご', 'みかん'] },
+	{ title: '飲み物', list: ['お茶', 'コーヒー'] }
+] %}
+{% for group in groups %}
+	<h4>{{ group.title }}</h4>
+	<ul>
+		{% for item in group.list %}
+		<li>{{ item }}</li>
+		{% endfor %}
+	</ul>
+{% endfor %}
+
+{# MEMO: ループ数をカウント #}
+<h3>2-7. ループ数を取得する</h3>
+<p>全部の件数：{{ items|length }}</p>
+{% for item in items %}
+	<p>{{ item }}（全 {{ loop.length }} 中の {{ loop.index }}）</p>
+{% endfor %}
+
+{# MEMO: for-else #}
+<h3>2-8. for-else（データがない時の表示）</h3>
+{% set emptyList = [] %}
+{% for item in emptyList %}
+	<p>{{ item }}</p>
+{% else %}
+	<p>データがありません。</p>
+{% endfor %}
+
+{# MEMO: loop オブジェクトの参考表 #}
+<h3>捕捉：loop オブジェクトの参考</h3>
+<table>
+	<tr>
+		<th>プロパティ</th>
+		<th>説明</th>
+	</tr>
+	<tr>
+		<td>loop.index</td>
+		<td>現在のループ番号（1始まり）</td>
+	</tr>
+	<tr>
+		<td>loop.index0</td>
+		<td>現在のループ番号（0始まり）</td>
+	</tr>
+	<tr>
+		<td>loop.revindex</td>
+		<td>残りのループ数（1始まり）</td>
+	</tr>
+	<tr>
+		<td>loop.revindex0</td>
+		<td>残りのループ数（0始まり）</td>
+	</tr>
+	<tr>
+		<td>loop.first</td>
+		<td>最初のループかどうか（true/false）</td>
+	</tr>
+	<tr>
+		<td>loop.last</td>
+		<td>最後のループかどうか（true/false）</td>
+	</tr>
+	<tr>
+		<td>loop.length</td>
+		<td>全ループ数（件数）</td>
+	</tr>
+</table>
+<hr>
+
+{# SECTION: フィルター系 #}
+<h2>3. フィルター系</h2>
+
+{# MEMO: 文字列や配列の加工に使う #}
+<h3>3-1. 文字加工</h3>
+<h4>3-1-1. upper / lower（大文字・小文字）</h4>
+{{ 'Hello'|upper }}   {# → HELLO #}
+{{ 'Hello'|lower }}   {# → hello #}
+<h4>3-1-2. capitalize（先頭だけ大文字）</h4>
+{{ 'hello world'|capitalize }}   {# → Hello world #}
+<h4>3-1-3. title（各単語の先頭を大文字）</h4>
+{{ 'hello world from twig'|title }}   {# → Hello World From Twig #}
+<h4>3-1-4. trim（前後の空白を除去）</h4>
+{{ '  こんにちは  '|trim }}   {# → こんにちは #}
+<h4>3-1-5. replace（置換）</h4>
+{{ '2025-11-22'|replace({'-':'/'}) }}
+{# → 2025/11/22 #}
+
+{# MEMO: 配列や文字列の長さを取得する #}
+<h3>3-2. 配列系</h3>
+<h4>3-2-1. length（配列や文字列の長さ）</h4>
+{{ [1,2,3]|length }}   {# → 3 #}
+{{ 'オジサン'|length }}   {# → 4（文字数） #}
+<h4>3-2-2. join（配列を文字列に）</h4>
+{% set tags = ['PHP','Slim','Twig'] %}
+{{ tags|join(', ') }}  {# → PHP, Slim, Twig #}
+<h4>3-2-3. split（文字列を配列に）</h4>
+{% set tagString = 'PHP,Slim,Twig' %}
+{% set tagArray = tagString|split(',') %}
+<ul>
+	{% for tag in tagArray %}
+		<li>{{ tag }}</li>
+	{% endfor %}
+</ul>
+<h4>3-2-4. sort（配列をソート）</h4>
+{% set unsorted = ['banana', 'apple', 'grape'] %}
+{% set sorted = unsorted|sort %}
+<ul>
+	{% for item in sorted %}
+		<li>{{ item }}</li>
+	{% endfor %}
+</ul>
+<h4>3-2-5. merge（配列を結合）</h4>
+{% set a = [1,2] %}
+{% set b = [3,4] %}
+{% set c = a|merge(b) %}
+{{ c|join(', ') }}
+{# → 1, 2, 3, 4 #}
+<h4>3-2-6. slice（配列や文字列の一部を取得）</h4>
+{{ 'Hello Twig'|slice(6,4) }}   {# → Twig #}
+{{ ['A','B','C','D']|slice(1,2)|join(', ') }}   {# → B, C #}
+
+{# MEMO: 文字列の整形系 #}
+<h3>3-3. 文字列の整形</h3>
+<h4>default（未定義なら初期値）</h4>
+{{ user.name|default('名無し') }} | {{ guest.name|default('名無し') }}
+<h4>truncate（文字を省略 …）</h4>
+{# {{ 'これはとても長い文章です。Twigのtruncateフィルターを使ってみます。'|truncate(20, '...') }} #}
+<p>Slim付属のTwigには無い場合もあるので注意。</p>
+<h4>nl2br（改行を <br> にする）</h4>
+{% set text = "こんにちは。\nTwigのnl2brフィルターを試しています。\n改行が反映されます。" %}
+{{ text|nl2br }}
+
+{# MEMO: 日付の整形系 #}
+<h3>3-4. 日付の整形</h3>
+<h4>date（フォーマット変換）</h4>
+{{ '2025-11-22'|date('Y/m/d') }} {# → 2025/11/22 #}<br>
+{{ '2025-11-22 14:30:00'|date('Y年m月d日 H時i分s秒') }}  {# → 2025年11月22日 14時30分00秒 #}
+<h4>現在日時の表示</h4>
+{{ "now"|date('Y-m-d H:i') }}  {# → 現在の日時が表示される #}
+
+{# MEMO: エスケープ系 #}
+<h3>3-5. 安全系（エスケープ）</h3>
+<h4>escape（HTMLエスケープ）</h4>
+{{ '<b>オジサン</b>'|escape }}
+<h4>raw（エスケープ解除）</h4>
+{{ '<b>オジサン</b>'|raw }}
+
+<hr>
+
+{% endblock %}

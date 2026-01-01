@@ -1,0 +1,81 @@
+{% extends 'layout.twig' %}
+
+{% block content %}
+
+<h1>embed Tips サンプル</h1>
+<p>{{ message }}</p>
+
+<hr>
+
+<h2>① デフォルト（差し替えなし）</h2>
+{% embed 'components/embed_card.twig' with {
+	title: 'デフォルトカード',
+	text: 'これはデフォルト表示です',
+	image: '/img/sample1.png'
+} %}
+{% endembed %}
+
+<hr>
+
+<h2>② テキストだけ差し替え</h2>
+{% embed 'components/embed_card.twig' with {
+	title: 'テキスト差し替え',
+	text: '使われない',
+	image: '/img/sample2.png'
+} %}
+{% block text %}
+	<p><strong>ここだけ embed で差し替え！</strong></p>
+{% endblock %}
+{% endembed %}
+
+<hr>
+
+<h2>③ 見出しとテキストを差し替え</h2>
+{% embed 'components/embed_card.twig' with {
+	title: '使われない',
+	text: '使われない',
+	image: '/img/sample3.png'
+} %}
+{% block heading %}
+	<h3 class="is-large">HTMLごと変更</h3>
+{% endblock %}
+{% block text %}
+	<ul>
+	<li>箇条書きもOK</li>
+	<li>タグ自由</li>
+	</ul>
+{% endblock %}
+{% endembed %}
+
+<hr>
+
+<h2>④ 画像ブロックを丸ごと差し替え</h2>
+{% embed 'components/embed_card.twig' with {
+	title: '画像差し替え',
+	text: '本文',
+	image: ''
+} %}
+{% block image %}
+	<div class="card__image is-dummy">NO IMAGE</div>
+{% endblock %}
+{% endembed %}
+
+<hr>
+
+<h2>⑤ macro との併用Tips（重要）</h2>
+{% embed 'components/embed_card.twig' with {
+	title: 'テスト',
+	text: '本文',
+	image: '/img/sample1.png'
+} %}
+
+	{# MEMO: macros のインポートはここで #}
+	{% import 'components/macros.twig' as ui %}
+	{% block text %}
+		{{ ui.iconBadge('new', '新着') }}
+	{% endblock %}
+{% endembed %}
+
+<hr>
+
+{% endblock %}

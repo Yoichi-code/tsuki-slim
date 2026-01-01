@@ -1,82 +1,88 @@
 <?php
-
-declare(strict_types=1);
-
-use App\Application\Handlers\HttpErrorHandler;
-use App\Application\Handlers\ShutdownHandler;
-use App\Application\ResponseEmitter\ResponseEmitter;
-use App\Application\Settings\SettingsInterface;
-use DI\ContainerBuilder;
 use Slim\Factory\AppFactory;
-use Slim\Factory\ServerRequestCreatorFactory;
+use Slim\Views\Twig;
+use Slim\Exception\HttpNotFoundException;
+use Middlewares\TrailingSlash;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use DI\Container;
+use Dotenv\Dotenv;
 
-require __DIR__ . '/../vendor/autoload.php';
+// ============================================================
+// SECTION: Initial Setup
+// ============================================================
 
-// Instantiate PHP-DI ContainerBuilder
-$containerBuilder = new ContainerBuilder();
+// ベースパスの定義
+define('BASE_PATH', __DIR__ . '/..');
 
-if (false) { // Should be set to true in production
-	$containerBuilder->enableCompilation(__DIR__ . '/../var/cache');
-}
+// Composerのオートローダーを読み込み
+require BASE_PATH . '/vendor/autoload.php';
 
-// Set up settings
-$settings = require __DIR__ . '/../app/settings.php';
-$settings($containerBuilder);
+// 環境変数の読み込み
+$dotenv = Dotenv::createImmutable(BASE_PATH);
+$dotenv->load();
 
-// Set up dependencies
-$dependencies = require __DIR__ . '/../app/dependencies.php';
-$dependencies($containerBuilder);
 
-// Set up repositories
-$repositories = require __DIR__ . '/../app/repositories.php';
-$repositories($containerBuilder);
+// ============================================================
+// SECTION: Container
+// ============================================================
 
-// Build PHP-DI Container instance
-$container = $containerBuilder->build();
-
-// Instantiate the app
+$container = new Container();
 AppFactory::setContainer($container);
+
+
+// ============================================================
+// SECTION: App
+// ============================================================
+
 $app = AppFactory::create();
-$callableResolver = $app->getCallableResolver();
 
-// Register middleware
-$middleware = require __DIR__ . '/../app/middleware.php';
-$middleware($app);
 
-// Register routes
-$routes = require __DIR__ . '/../app/routes.php';
-$routes($app);
+// ============================================================
+// SECTION: Middleware
+// ============================================================
 
-/** @var SettingsInterface $settings */
-$settings = $container->get(SettingsInterface::class);
-
-$displayErrorDetails = $settings->get('displayErrorDetails');
-$logError = $settings->get('logError');
-$logErrorDetails = $settings->get('logErrorDetails');
-
-// Create Request object from globals
-$serverRequestCreator = ServerRequestCreatorFactory::create();
-$request = $serverRequestCreator->createServerRequestFromGlobals();
-
-// Create Error Handler
-$responseFactory = $app->getResponseFactory();
-$errorHandler = new HttpErrorHandler($callableResolver, $responseFactory);
-
-// Create Shutdown Handler
-$shutdownHandler = new ShutdownHandler($request, $errorHandler, $displayErrorDetails);
-register_shutdown_function($shutdownHandler);
-
-// Add Routing Middleware
+// MEMO: ルーティングミドルウェアの追加
 $app->addRoutingMiddleware();
 
-// Add Body Parsing Middleware
-$app->addBodyParsingMiddleware();
+// MEMO: 404 への対応を追加
+// 404 などのエラーミドルウェア
+$errorMiddleware = $app->addErrorMiddleware(true, true, true);
+// 404 のときに Twig で返すハンドラ
+$customNotFoundHandler = function (
+	Request $request,
+	\Throwable $exception,
+	bool $displayErrorDetails,
+	bool $logErrors,
+	bool $logErrorDetails
+) use ($app): Response {
+	$view = Twig::fromRequest($request);
+	$response = $app->getResponseFactory()->createResponse(404);
+	// 最小でOK。必要になったら make_seo($request, [...]) など渡せば拡張可
+	return $view->render($response, '404.twig', [
+		'message' => 'ページが見つかりません。',
+	]);
+};
+// 404 を差し替え
+$errorMiddleware->setErrorHandler(HttpNotFoundException::class, $customNotFoundHandler);
 
-// Add Error Middleware
-$errorMiddleware = $app->addErrorMiddleware($displayErrorDetails, $logError, $logErrorDetails);
-$errorMiddleware->setDefaultErrorHandler($errorHandler);
+// MEMO: スラッシュがついた時のミドルウェアの追加
+$app->add((new TrailingSlash(false))->redirect());
 
-// Run App & Emit Response
-$response = $app->handle($request);
-$responseEmitter = new ResponseEmitter();
-$responseEmitter->emit($response);
+
+// ============================================================
+// SECTION: Routes
+// ============================================================
+
+// NOTE: ルーティングの設定
+// ここでroutes/web.phpを読み込むことで、ルート定義をアプリケーションに追加します。
+// これにより、トップページ、会社概要ページ、お問い合わせページのルートが設定されます。
+// ルート定義は、routes/web.phpファイル内で行われています。
+(require BASE_PATH . '/routes/web.php')($app);
+
+
+// ============================================================
+// SECTION: Run
+// ============================================================
+
+$app->run();

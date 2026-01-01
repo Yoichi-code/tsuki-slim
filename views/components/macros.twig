@@ -1,0 +1,176 @@
+{# components/macros.twig #}
+{# ===================================================== #}
+{#  マクロ集：あらゆるテンプレで使いまわせる便利セット #}
+{# ===================================================== #}
+
+{# 1. ----- マクロの基本 ----- #}
+{% macro simpleBadge(type, label) %}
+	<span class="badge badge-{{ type }}">{{ label }}</span>
+{% endmacro %}
+
+
+{% macro newsItem(item) %}
+<li class="news-item">
+	<span class="news-date">{{ item.date }}</span>
+	<a href="/news/{{ item.slug }}" class="news-title">{{ item.title }}</a>
+</li>
+{% endmacro %}
+
+
+{% macro categoryLabel(cat) %}
+	<span class="cat cat-{{ cat.slug }}">{{ cat.name }}</span>
+{% endmacro %}
+
+
+{% macro image(src, alt) %}
+	<figure class="img-block">
+		<img src="{{ src }}" alt="{{ alt }}">
+		{% if alt %}
+			<figcaption>{{ alt }}</figcaption>
+		{% endif %}
+	</figure>
+{% endmacro %}
+
+
+{% macro link(path, text, external) %}
+	{% if external %}
+		<a href="{{ path }}" target="_blank" rel="noopener">{{ text }}</a>
+	{% else %}
+		<a href="{{ path }}">{{ text }}</a>
+	{% endif %}
+{% endmacro %}
+
+
+{% macro list(items) %}
+<ul>
+	{% for item in items %}
+		<li>{{ item }}</li>
+	{% endfor %}
+</ul>
+{% endmacro %}
+
+
+{% macro table(rows) %}
+<table class="table">
+	{% for r in rows %}
+		<tr>
+			{% for col in r %}
+				<td>{{ col }}</td>
+			{% endfor %}
+		</tr>
+	{% endfor %}
+</table>
+{% endmacro %}
+
+
+{% macro simplePagination(current, total, baseUrl) %}
+<nav class="pagination">
+	{% for i in 1..total %}
+		{% if i == current %}
+			<span class="current">{{ i }}</span>
+		{% else %}
+			<a href="{{ baseUrl }}{{ i }}">{{ i }}</a>
+		{% endif %}
+	{% endfor %}
+</nav>
+{% endmacro %}
+
+
+{% macro box(title, content) %}
+<div class="box">
+	<h3>{{ title }}</h3>
+	<div class="box-body">
+		{{ content }}
+	</div>
+</div>
+{% endmacro %}
+
+
+{% macro simpleArticleCard(article) %}
+<div class="card">
+	<h3 class="card-title">{{ article.title }}</h3>
+	<p class="card-date">{{ article.date }}</p>
+	<p class="card-excerpt">{{ article.excerpt }}</p>
+	<a class="card-link" href="/column/detail/{{ article.id }}">続きを読む</a>
+</div>
+{% endmacro %}
+
+{# 2. ----- マクロ応用編 ----- #}
+{# 2-1. 再帰カテゴリーツリー #}
+{% macro categoryTree(list) %}
+<ul>
+	{% for item in list %}
+		<li>
+			{{ item.name }}
+			{# 子があるなら再帰呼び出し #}
+			{% if item.children is defined and item.children|length > 0 %}
+				{# NOTE: _self.macro名() で「自分自身」を再帰呼び出し #}
+				{{ _self.categoryTree(item.children) }}
+			{% endif %}
+		</li>
+	{% endfor %}
+</ul>
+{% endmacro %}
+
+{# 2-2. ページネーション #}
+{% macro naviPagination(current, total, baseUrl) %}
+<nav class="pagination">
+	{# 前へ #}
+	{% if current > 1 %}
+		<a href="{{ baseUrl }}/page/{{ current - 1 }}">前へ</a>
+	{% endif %}
+	{# 数字リンク #}
+	{% for i in 1..total %}
+		<a href="{{ baseUrl }}/page/{{ i }}"
+			class="{{ i == current ? 'current' : '' }}">
+			{{ i }}
+		</a>
+	{% endfor %}
+	{# 次へ #}
+	{% if current < total %}
+		<a href="{{ baseUrl }}/page/{{ current + 1 }}">次へ</a>
+	{% endif %}
+</nav>
+{% endmacro %}
+
+{# 2-3. カード生成 #}
+{% macro boxArticleCard(item) %}
+<article class="card">
+	<h4>{{ item.title }}</h4>
+	<p>{{ item.date }}</p>
+	<p>{{ item.excerpt }}</p>
+</article>
+{% endmacro %}
+
+{# 2-4. バッジ系 #}
+{% macro iconBadge(type, label) %}
+<span class="badge badge-{{ type }}">
+	{% if type == 'new' %}🆕{% endif %}
+	{% if type == 'up' %}⬆️{% endif %}
+	{{ label }}
+</span>
+{% endmacro %}
+
+{# 2-5. 交互色テーブル #}
+{% macro zebraRow(item, index) %}
+<tr class="{{ index is even ? 'even' : 'odd' }}">
+	<td>{{ item }}</td>
+</tr>
+{% endmacro %}
+
+{# 2-6. フォーム部品 #}
+{% macro input(name, label, value) %}
+<label>{{ label }}
+	<input type="text" name="{{ name }}" value="{{ value }}">
+</label>
+{% endmacro %}
+
+{# 2-7. ステータス表示（パーツ内での条件分岐） #}
+{% macro statusLabel(status) %}
+<span class="
+	{{ status == 'ok' ? 'green' : '' }}
+	{{ status == 'ng' ? 'red' : '' }}
+">
+	{{ status|upper }}
+</span>
+{% endmacro %}

@@ -1,0 +1,39 @@
+{% extends 'layout.twig' %}
+
+{% block content %}
+	<hr>
+	<p>{{ message }}</p>
+	<hr>
+	<ul>
+		<li><a href="/news">ニュースページ</a></li>
+		<li><a href="/column">コラムページ</a>
+			<ul>
+				<li><a href="/column/category/bodymake">ボディメイク</a></li>
+				<li><a href="/column/category/training">トレーニング</a></li>
+				<li><a href="/column/category/stretch">ストレッチ</a></li>
+				<li><a href="/column/category/diet">ダイエット</a></li>
+				<li><a href="/column/category/lifestyle">ライフスタイル</a></li>
+				<li><a href="/column/category/others">その他</a></li>
+			</ul>
+		</li>
+		<li><a href="/about">aboutページ</a></li>
+		<li><a href="/contact">contactページ</a></li>
+		<li><a href="/hello">hello系ページ</a></li>
+		<li><a href="/twig-sample">Twigサンプルページ</a></li>
+		<li><a href="/twig-macro">Twigマクロページ</a></li>
+		<li><a href="/embed-sample">Embedサンプルページ</a></li>
+	</ul>
+	<hr>
+	<h2>最新ニュース</h2>
+	<ul>
+	{% for item in news %}
+		<li>
+			<a href="/news/{{ item.slug }}">
+				{{ item.publishedAt|date("Y年m月d日") }} - {{ item.name }}
+			</a>
+		</li>
+	{% else %}
+		<li>記事がありません</li>
+	{% endfor %}
+	</ul>
+{% endblock %}

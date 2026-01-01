@@ -1,0 +1,93 @@
+{% extends 'layout.twig' %}
+
+{% block content %}
+
+{# SECTION: マクロの基本 #}
+<h1>Twig マクロのサンプル集</h1>
+<p>{{ message }}</p>
+
+<hr>
+
+<h2>1. マクロの基本</h2>
+
+{% import 'components/macros.twig' as ui %}
+
+<h3>マクロのサンプル</h3>
+
+{{ ui.simpleBadge('primary', '新着') }}
+
+{{ ui.newsItem({ date: '2025-01-01', title: 'テスト記事', slug: 'test' }) }}
+
+{{ ui.categoryLabel({ slug: 'news', name: 'ニュース' }) }}
+
+{{ ui.image('https://placehold.jp/300x200.png', 'サンプル画像') }}
+
+{{ ui.link('https://example.com', '外部サイト', true) }}
+
+{{ ui.list(['A', 'B', 'C']) }}
+
+{{ ui.table([
+	['ID', 'Name'],
+	[1, 'オジサン'],
+	[2, 'GPTくん']
+]) }}
+
+{{ ui.simplePagination(2, 10, '/news/page/') }}
+
+{{ ui.box('タイトル', '中身です！') }}
+
+{{ ui.simpleArticleCard({
+	id: 1,
+	title: 'コラムタイトル',
+	date: '2025-01-02',
+	excerpt: 'これはサンプルの抜粋テキストです。'
+}) }}
+
+<hr>
+
+{# SECTION: マクロ応用編 #}
+<h2>2. マクロ応用編</h2>
+<h3>2-1. 再帰カテゴリーツリー</h3>
+{% set categories = [
+	{ name: '関東', children: [
+		{ name: '埼玉', children: [
+			{ name: 'さいたま市' },
+			{ name: '川口市' }
+		]},
+		{ name: '東京' }
+	]}
+] %}
+{{ ui.categoryTree(categories) }}
+
+<h3>2-2. ページネーション</h3>
+{{ ui.naviPagination(3, 10, '/news') }}
+
+<h3>2-3. カード生成</h3>
+{% set articles = [
+	{ title: '記事1', date: '2025-01-01', excerpt: '概要だよ' },
+	{ title: '記事2', date: '2025-01-02', excerpt: '概要その2' }
+] %}
+{% for item in articles %}
+	{{ ui.boxArticleCard(item) }}
+{% endfor %}
+
+<h3>2-4. バッジ系</h3>
+{{ ui.iconBadge('new', '新着') }}
+{{ ui.iconBadge('up', '更新') }}
+
+<h3>2-5. 交互色テーブル</h3>
+{% set fruits = ['りんご', 'みかん', 'ぶどう'] %}
+<table>
+	{% for f in fruits %}
+		{{ ui.zebraRow(f, loop.index) }}
+	{% endfor %}
+</table>
+
+<h3>2-6. フォーム部品</h3>
+{{ ui.input('username', 'ユーザー名', '') }}
+
+<h3>2-7. ステータス表示（パーツ内での条件分岐）</h3>
+{{ ui.statusLabel('ok') }}
+{{ ui.statusLabel('ng') }}
+
+{% endblock %}

@@ -1,0 +1,17 @@
+{# templates/components/embed_card.twig #}
+
+<div class="card">
+	{% block image %}
+		<img src="{{ image }}" alt="{{ title }}">
+	{% endblock %}
+
+	<div class="card__body">
+		{% block heading %}
+			<h3>{{ title }}</h3>
+		{% endblock %}
+
+		{% block text %}
+			<p>{{ text }}</p>
+		{% endblock %}
+	</div>
+</div>

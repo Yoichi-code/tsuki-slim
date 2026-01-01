@@ -1,0 +1,19 @@
+{# components/box.twig #}
+
+<div class="box">
+	{% if title %}
+		<h3 class="box-title">{{ title }}</h3>
+	{% endif %}
+
+	{% if items is not empty %}
+		<ul class="box-list">
+		{% for item in items %}
+			<li class="box-item">
+			{{ item }}
+			</li>
+		{% endfor %}
+		</ul>
+	{% else %}
+		<p>データがありません。</p>
+	{% endif %}
+</div>

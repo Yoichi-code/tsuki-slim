@@ -1,0 +1,38 @@
+{# views/parts/head.twig #}
+<meta charset="UTF-8">
+<title>{{ seo.title ?? 'サイトタイトル' }}</title>
+<meta name="description" content="{{ seo.description ?? '基本の説明文' }}">
+<link rel="canonical" href="{{ seo.canonical ?? '' }}">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+{# 余裕があれば（無ければ後回しでOK） #}
+{% if seo %}
+<meta property="og:title" content="{{ seo.title }}">
+<meta property="og:description" content="{{ seo.description ?? '基本の説明文' }}">
+<meta property="og:image" content="{{ seo.ogImage }}">
+<meta property="og:url" content="{{ seo.canonical ?? '' }}">
+<meta property="og:type" content="{{ seo.type ?? 'website' }}">
+{% endif %}
+
+<!-- SEO structuredData START -->
+{% if seo.structuredData is defined %}
+<script type="application/ld+json">
+{{ seo.structuredData|json_encode(
+	constant('JSON_UNESCAPED_SLASHES')
+	b-or constant('JSON_UNESCAPED_UNICODE')
+	b-or constant('JSON_PRETTY_PRINT')
+)|raw }}
+</script>
+{% endif %}
+
+<style>
+.pagination ul {
+	list-style: none;
+	padding: 0;
+	display: flex;
+	gap: 8px;
+}
+</style>
+
+
+<!-- <link rel="stylesheet" href="/common/css/style.css"> -->

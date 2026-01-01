@@ -1,0 +1,15 @@
+{% extends 'layout.twig' %}
+
+{% block content %}
+	<h1>{{ article.name }}</h1>
+	<hr>
+	{% if article %}
+		<p><time datetime="{{ article.publishedAt }}">{{ article.publishedAt }}</time></p>
+		{% if article.thumb %}
+			<p><img src="{{ article.thumb }}" alt=""></p>
+		{% endif %}
+		<div class="content">{{ article.content|raw }}</div>
+	{% else %}
+		<p>記事が見つかりません。</p>
+	{% endif %}
+{% endblock %}

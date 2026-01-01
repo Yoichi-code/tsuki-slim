@@ -1,0 +1,21 @@
+{# views/parts/pagination.twig #}
+{% if totalPages > 1 %}
+<nav class="pagination">
+	<ul>
+		{# 前へリンク #}
+		{% if currentPage > 1 %}
+			<li><a href="?page={{ currentPage - 1 }}">« 前へ</a></li>
+		{% endif %}
+		{# 各ページリンク #}
+		{% for i in 1..totalPages %}
+			<li class="{{ currentPage == i ? 'current' : '' }}">
+			<a href="?page={{ i }}">{{ i }}</a>
+			</li>
+		{% endfor %}
+		{# 次へリンク #}
+		{% if currentPage < totalPages %}
+			<li><a href="?page={{ currentPage + 1 }}">次へ »</a></li>
+		{% endif %}
+	</ul>
+</nav>
+{% endif %}
