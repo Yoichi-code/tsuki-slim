@@ -1,0 +1,1066 @@
+@charset "utf-8";
+
+
+/* -- Link
+-------------------------------------------------------------------------------- */
+a,
+[type="submit"] {
+	color: #333;
+	text-decoration: none;
+	outline: none;
+	transition: all 0.3s ease;
+}
+a:hover,
+a:active,
+a:focus,
+a:hover span.arw,
+[type="submit"]:hover,
+[type="submit"]:focus {
+	color: #a68b62;
+}
+a:focus {
+	outline: 1px solid #594a2a;
+}
+a.arw,
+a span.arw {
+	color: #31cde0;
+	text-align: right;
+	display: block;
+	padding-right: 60px;
+	position: relative;
+	transition: all 0.3s ease;
+}
+a.arw::after,
+a span.arw::after,
+a.arw::before,
+a span.arw::before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 50%;
+	right: 0;
+	transition: all 0.3s ease;
+}
+a.arw::after,
+a span.arw::after {
+	width: 40px;
+	height: 0;
+	border-bottom: solid 1px #31cde0;
+}
+a.arw::before,
+a span.arw::before {
+	width: 0;
+	height: 0;
+	margin-top: -6px;
+	border-top: solid 3px transparent;
+	border-right: solid 5px transparent;
+	border-bottom: solid 3px #31cde0;
+	border-left: solid 5px #31cde0;
+}
+a.arw:hover::after,
+a:hover span.arw::after,
+a.arw:hover::before,
+a:hover span.arw::before {
+	border-bottom-color: #a68b62;
+	border-left-color: #a68b62;
+	right: -20px;
+}
+
+
+
+/* -- Layout
+-------------------------------------------------------------------------------- */
+.sp,
+[class^="sp-"] {
+	display: none;
+}
+header,
+main,
+footer {
+	text-align: left;
+}
+body::before {
+	content: "";
+	background-color: #98e6ef;
+	display: block;
+	width: 50%;
+	height: calc(100% + 300px);
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -1;
+	max-height: 100vh;
+}
+main {
+	font-size: 1.6rem;
+	overflow: hidden;
+	min-height: calc(100vh - 150px);
+}
+main > section,
+main > aside {
+	padding: 100px;
+	position: relative;
+	z-index: 1;
+}
+.notice {
+	background: #fff url(/img/bg_notice.webp) no-repeat 70% center / auto 100%!important;
+}
+
+
+
+/* -- Headerer
+-------------------------------------------------------------------------------- */
+header {
+	background: url(/img/head_bg2.webp) repeat-x 0 0 / auto 18px;
+	width: 100%;
+	height: 100px;
+	position: relative;
+	z-index: 9;
+}
+header nav {
+	width: 100%;
+	height: 100px;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+.nav-main {
+	text-align: center;
+	white-space: nowrap;
+	display: flex;
+	flex-flow: row nowrap;
+	height: 100px;
+	position: absolute;
+	top: 0;
+	right: 100px;
+}
+.nav-main li {
+	display: block;
+	overflow: hidden;
+	position: relative;
+}
+.nav-main li a {
+	display: block;
+	box-sizing: border-box;
+	height: 100%;
+	padding: 40px 20px 0;
+}
+.nav-main a i,
+.nav-main a span,
+.nav-main a::after,
+.nav-lesson a i,
+.nav-lesson a span,
+.nav-lesson a::before {
+	display: block;
+	transition: all 0.5s ease-in-out;
+}
+.nav-main a i,
+.nav-lesson a i,
+.nav-main a::before,
+.nav-sns a,
+.nav-lesson a span {
+	font-size: 1.8rem;
+	color: #594a2a;
+	letter-spacing: 0.07em;
+	display: inline-block;
+	text-shadow: 0 0 5px #764b00;
+	position: relative;
+	z-index: 1;
+}
+.nav-main a::after,
+.nav-main a span {
+	box-sizing: border-box;
+	height: 100%;
+	margin: auto;
+	position: absolute;
+	right: -100%;
+	bottom: 0;
+	left: -100%;
+}
+.nav-main a::after {
+	content: "";
+	background-color: rgba(49, 205, 224, 0.75);
+	width: 0;
+	bottom: 0;
+	z-index: 0;
+}
+.nav-main a span {
+	font: 500 1.4rem/1 "Gyate" ,sans-serif;
+	color: #fff;
+	letter-spacing: 0.05em;
+	width: 100%;
+	padding: 65px 0 0;
+	text-shadow: 0 0 3px #000;
+	bottom: -100%;
+	z-index: 1;
+}
+.nav-main a:hover::after {
+	width: 100%;
+}
+.nav-main a::before {
+	display: inline-block;
+	margin-right: 10px;
+}
+.nav-main a:hover span {
+	bottom: 0;
+}
+.nav-lesson {
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 1;
+}
+.nav-lesson a {
+	font-size: 2rem;
+	background-color: #a68b62;
+	text-align: center;
+	display: flex;
+	align-items: center;
+	width: 300px;
+	height: 100px;
+	position: absolute;
+	right: -200px;
+}
+.nav-lesson a::before,
+.nav-lesson a i {
+	color: #fff;
+	text-align: center;
+}
+.nav-lesson a i {
+	text-align: left;
+	width: 70px;
+}
+.nav-lesson a::before {
+	width: 30px;
+}
+.nav-lesson a span {
+	font: 500 1.4rem/1 "Gyate" ,sans-serif;
+	color: #fff;
+	background-color: #a68b62;
+	letter-spacing: 0.05em;
+	width: 150px;
+	padding-top: 4px;
+}
+.nav-lesson a:hover {
+	right: 0;
+}
+.nav-lesson a:hover::before {
+	padding-left: 30px;
+}
+.nav-sns {
+	display: flex;
+	flex-flow: column nowrap;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+}
+.nav-sns {
+	width: 100px;
+	position: fixed;
+	bottom: 135px;
+	left: 0;
+}
+.nav-sns li {
+	display: block;
+	width: 100px;
+	height: 50px;
+	position: relative;
+}
+.nav-sns li a {
+	font-size: 2rem;
+	line-height: 1;
+	display: block;
+	width: 105px;
+	height: 20px;
+	padding: 15px 100px 15px 25px;
+	position: absolute;
+	right: 0;
+	transition: all 0.5s ease-in-out;
+}
+.nav-sns li a::before {
+	position: absolute;
+	top: 15px;
+	right: 41px;
+}
+.nav-sns li:nth-child(n+4) a::before {
+	content: "";
+	background: #594a2a no-repeat center center / 10px auto;
+	width: 18px;
+	height: 18px;
+	border-radius: 4px;
+	box-shadow: 0 0 5px #764b00;
+}
+.nav-sns li:nth-child(4) a::before {
+	background-image: url(/img/icon_room.webp);
+}
+.nav-sns li:nth-child(5) a::before {
+	background-image: url(/img/icon_blog.webp);
+}
+.nav-sns li a b {
+	font: 600 1.6rem/20px "Gyate" ,sans-serif;
+	white-space: nowrap;
+}
+.nav-sns li a:hover {
+	right: -130px;
+}
+.js-nav_out header {
+	background-color: rgba(255, 255, 255, 0.75);
+	position: fixed;
+	top: -100px;
+	transition: all 1s ease-in-out;
+}
+.js-nav_out main {
+	padding-top: 100px;
+}
+header .logo {
+	font-size: 0;
+	background: url(/img/head_bg1.webp) no-repeat center 0, url(/img/head_bg2.webp) repeat-x -10px 0;
+	background-color: #31cde0;
+	background-size: 300px auto, auto 18px;
+	width: 300px;
+	height: 300px;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+body:not(.js-nav_out) header .logo a {
+	display: block;
+	width: 200px;
+	height: 150px;
+	position: absolute;
+	top: 75px;
+	left: 50px;
+}
+header .logo a::before,
+header .logo a::after {
+	content: "";
+	backface-visibility: hidden;
+	display: block;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	transition: all 0.5s ease-in-out;
+}
+header .logo a::before {
+	background: url(/img/logo_portrait.webp) no-repeat center 0 / 100% auto;
+}
+header .logo a::after {
+	background: url(/img/logo_portrait_back.webp) no-repeat center 0 / 100% auto;
+	transform: rotateY(-180deg);
+}
+.js-nav_out header .logo {
+	font-size: 0;
+	background: #31cde0;
+	width: 100px;
+	height: 100px;
+	position: relative;
+	z-index: 2;
+}
+.js-nav_out header .logo a::before {
+	background: url(/img/logo-img.webp) no-repeat center center;
+	background-size: 75px auto;
+}
+.js-nav_out header .logo a::after {
+	background: url(/img/logo-img_back.webp) no-repeat center center;
+	background-size: 75px auto;
+}
+header .logo a:hover::before {
+	transform: rotateY(180deg);
+}
+header .logo a:hover::after {
+	transform: none;
+}
+body:not(.js-nav_out) header p.logo::before {
+	content: "↑ Click to site top";
+	font: 500 1.4rem/1 "Fredericka the Great", cursive;
+	color: #fff;
+	letter-spacing: 0.1em;
+	position: absolute;
+	bottom: 35px;
+	left: 65px;
+	transform: rotate(15deg);
+}
+.js-nav_in header {
+	top: 0;
+}
+header #spNaviBtn,
+.nav-main a em {
+	display: none;
+}
+
+
+
+/* -- Contents
+-------------------------------------------------------------------------------- */
+section strong {
+	color: #31cde0;
+}
+section figcaption {
+	font-size: 1.2rem;
+	margin-top: 5px;
+}
+
+/* -- main visual -- */
+#kv {
+	background: #fff;
+	box-sizing: border-box;
+	height: 400px;
+	margin: 0 0 100px 300px;
+	position: relative;
+}
+.vis-title {
+	font: 600 2.4rem/1 "Gyate" ,sans-serif;
+	color: #6e3a21;
+	text-shadow: 0 0 3px #666, 0 0 5px #fff, 0 0 8px #fff;
+	position: absolute;
+	top: auto;
+	bottom: 25px;
+	left: -200px;
+	z-index: 2;
+}
+.vis-title i {
+	font-size: 10rem;
+	display: block;
+	margin-bottom: 20px;
+}
+.vis-img {
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
+	position: relative;
+	z-index: 0;
+}
+.vis-img img {
+	width: 100%;
+	height: 100%;
+	opacity: 0.5;
+	object-fit: cover;
+}
+_:-ms-input-placeholder,
+:root .vis-img img {
+	width: 100%;
+	height: auto;
+	margin: auto;
+	position: absolute;
+	top: -100%;
+	bottom: -100%;
+}
+
+/* -- access and calendar -- */
+aside {
+	background: url(/img/bg_aside.webp) repeat center center;
+	text-align: center;
+	padding: 50px 0;
+}
+.access {
+	background-color: #fff;
+	display: table;
+	margin: auto;
+	padding: 30px;
+	border: dashed 2px #31cde0;
+	box-shadow: 0 0 0 10px #fff;
+}
+.access > * {
+	vertical-align: middle;
+	display: table-cell;
+	border: 0;
+}
+.access address {
+	font-size: 1.4rem;
+	line-height: 1.75;
+	text-align: left;
+	padding-right: 30px;
+}
+.access address h2 {
+	width: 282px;
+	margin-bottom: 10px;
+}
+.access iframe {
+	width: 400px;
+	height: 220px;
+}
+aside .calendar-wrap {
+	font-size: 0;
+	font-family: "Gyate" ,sans-serif;
+	width: calc(100% - 40px);
+	max-width: 1400px;
+	margin: 40px auto 0;
+	position: relative;
+}
+aside .calendar-wrap h3,
+#calendarTab li,
+#support a {
+	line-height: 20px;
+	color: #fff!important;
+	background: #31cde0;
+	vertical-align: top;
+	display: inline-block;
+	width: 35%;
+	height: 20px;
+	padding: 10px 0 12px;
+	border: dashed 2px #fff;
+	box-shadow: 0 0 0 5px #31cde0;
+	text-shadow: 0 0 5px #000;
+}
+aside .calendar-wrap h3 {
+	font-size: 2rem;
+	width: 400px;
+}
+#calendarTab,
+#support {
+	vertical-align: top;
+	display: inline-block;
+}
+#calendarTab li,
+#support {
+	font-size: 1.4rem;
+	width: 150px;
+	margin-left: 5px;
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+#calendarTab li.active {
+	cursor: inherit;
+	border-color: #ff0;
+	text-shadow: 0 0 2px #31cde0, 0 0 5px #ff0, 0 0 8px #ff0;
+}
+#calendarTab li:not(.active):hover,
+#support a:hover {
+	text-shadow: 0 0 5px #ff0;
+}
+#calendarTab li::before,
+#support a::before {
+	font: 500 1.6rem/1 FontAwesome;
+	vertical-align: baseline;
+	display: inline-block;
+	margin-right: 10px;
+}
+#calendarTab li:not(.active)::before {
+	content: "\f079";
+}
+#calendarTab li.active::before {
+	content: "\f019";
+}
+#support,
+#support a {
+	font-size: 0;
+	width: 50px;
+}
+#support a::before {
+	content: "\f059";
+	font-size: 2.2rem;
+	margin: 0;
+}
+#partTab {
+	display: none;
+}
+.calendar-wrap .calendar {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+	width: 100%;
+	opacity: 0;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: -1;
+	transform: translateY(-30px);
+	transition: all 1s ease;
+}
+.calendar-wrap .calendar.active {
+	opacity: 1;
+	position: relative;
+	z-index: 1;
+	transform: translateY(0);
+}
+.calendar h4 {
+	font: 500 4.2rem/1 "Fredericka the Great", cursive;
+	color: #2fb3c3;
+	letter-spacing: 0.1em;
+	width: 100%;
+	margin: 20px 0 10px;
+	text-shadow: 0 0 2px #31cde0, 0 0 5px #ff0, 0 0 8px #ff0;
+}
+.calendar div[class^="table-"] {
+	width: calc(33.333% - 20px);
+}
+.calendar table {
+	width: 100%;
+	table-layout: fixed;
+}
+_:-ms-lang(x),
+.calendar table {
+	border-collapse: separate;
+}
+.calendar table caption {
+	font-size: 1.6rem;
+	color: #fff;
+	background-color: #31cde0;
+	letter-spacing: 0.15em;
+	padding: 10px 0;
+	text-shadow: 0 0 3px #000;
+}
+.calendar table th,
+.calendar table td {
+	background-color: #fff;
+	background-clip: padding-box;
+	width: 14.286%;
+	border: solid 1px #31cde0;
+}
+.calendar table th {
+	font-size: 1.6rem;
+	padding: 5px 0;
+}
+.calendar table td.day-box {
+	font-size: 1.6rem;
+	font-family: "Fredericka the Great", cursive;
+	color: #000;
+	position: relative;
+}
+.calendar .sat {
+	background-color: #f4fcff;
+}
+.calendar th.sat {
+	color: rgb(35, 45, 145);
+}
+.calendar .sun,
+.calendar .holiday {
+	background-color: #fff8fe;
+}
+.calendar th.sun {
+	color: rgb(185, 45, 45);
+}
+.calendar td.today {
+	color: #fff!important;
+	background-color: #a68b62;
+}
+.day-number {
+	text-align: center;
+	width: 1.6em;
+	padding: 5px 0 1em;
+}
+.calendar-mark {
+	text-align: right;
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
+	padding: 1em 5px 5px 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.full .calendar-mark {
+	font: 600 1.4rem/1 "Gyate" ,sans-serif;
+	color: #f30!important;
+	display: flex;
+	align-items: end;
+	justify-content: flex-end;
+}
+.calendar-daylink {
+	text-align: right;
+	text-decoration: underline;
+	display: block;
+	box-sizing: border-box;
+	width: 100%;
+	height: 100%;
+	padding: 1em 5px 5px 0;
+	position: absolute;
+	top: 0;
+}
+.calendar-daylink,
+.td_blue {
+	color: #00f!important;
+	background-color: rgba(51, 204, 225, 0.15);
+}
+.calendar-daylink:hover {
+	background-color: rgba(51, 204, 225, 0.4);
+}
+.RB .calendar-daylink,
+.td_orange {
+	color: rgb(255, 81, 0)!important;
+	background-color: rgba(225, 170, 51, 0.15);
+}
+.RB .calendar-daylink:hover {
+	background-color: rgba(225, 170, 51, 0.4);
+}
+#supportWindow {
+	background-color: rgba(49, 205, 224, 0.75);
+	display: flex;
+	overflow: hidden;
+	align-content: center;
+	justify-content: center;
+	width: 0;
+	height: 100%;
+	opacity: 0;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1;
+	transition: all 1s ease;
+}
+.js-support_open #supportWindow {
+	width: 100%;
+	opacity: 1;
+}
+#supportWindow figure {
+	background-color: #fff;
+	margin: auto;
+	padding: 10px;
+	border: dashed 2px #31cde0;
+	box-shadow: 0 0 0 10px #fff;
+	position: relative;
+}
+#supportWindow figure span {
+	font-size: 0;
+	background-color: #fff;
+	display: block;
+	width: 40px;
+	height: 40px;
+	cursor: pointer;
+	border: solid 3px #31cde0;
+	border-radius: 7px;
+	box-shadow: 0 0 10px #fff, 0 0 20px #fff;
+	position: absolute;
+	top: -32px;
+	right: -32px;
+	transition: all 1s ease;
+}
+#supportWindow figure span:hover {
+	box-shadow: 0 0 10px #594a2a, 0 0 20px #764b00;
+}
+#supportWindow figure span::before {
+	content: "\f00d";
+	font: 500 3rem/40px FontAwesome;
+	color: #31cde0;
+	display: block;
+	transition: all 1s ease;
+}
+#supportWindow figure span:hover::before {
+	transform: rotate(405deg);
+}
+#repletion {
+	background-color: #fff;
+	max-width: 1420px;
+	margin: -10px auto 0;
+	padding: 20px 0;
+	border: dashed 2px #31cde0;
+	box-shadow: 0 0 0 10px #fff;
+}
+#repletion h4 {
+	font-size: 1.6rem;
+	color: #a27837;
+	margin-bottom: 5px;
+}
+#repletion ul {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+}
+#repletion ul li {
+	font-size: 1.4rem;
+	line-height: 1.75;
+	text-align: left;
+	width: 33.333%;
+	padding: 10px 20px 5px;
+}
+#repletion ul li:nth-child(2) {
+	width: calc(33.333% - 4px);
+	border-right: dashed 2px #31cde0;
+	border-left: dashed 2px #31cde0;
+}
+#repletion ul + p {
+	margin-top: 20px;
+	padding-top: 20px;
+	border-top: dashed 2px #31cde0;
+}
+#repletion ul + p b {
+	display: inline-block;
+	padding: 2px 5px;
+}
+
+/* -- title -- */
+.title-main {
+	font-size: 2rem;
+	color: #6e3a21;
+	box-sizing: border-box;
+	width: 100%;
+	text-shadow: 0 0 1px #b9a49b, 0 0 3px #eee, 0 0 5px #000;
+}
+.title-main i {
+	font-size: 8rem;
+	display: block;
+	margin-bottom: 10px;
+}
+.title-sub1 {
+	font-size: 2.4rem;
+	line-height: 1.35;
+	color: #fff;
+	background: #31cde0;
+	margin: 0 0 50px;
+	padding: 15px 185px 15px 30px;
+	border-top: dashed 2px #fff;
+	border-bottom: dashed 2px #fff;
+	box-shadow: 0 5px 0 #31cde0, 0 -5px 0 #31cde0;
+	text-shadow: 1px 1px 3px #333;
+	position: relative;
+}
+.title-sub1::after {
+	content: "";
+	background: url(/img/icon_title-sub1.webp) no-repeat 0 0 / cover;
+	display: block;
+	width: 121px;
+	height: 142px;
+	position: absolute;
+	right: 20px;
+	bottom: -60px;
+	transform: rotate(-25deg);
+}
+.title-sub2 {
+	font-size: 2rem;
+	line-height: 1.35;
+	color: #31cde0;
+	background: url(/img/icon_title-sub2.webp) no-repeat 0 2px / auto 20px;
+	margin: 50px 0 30px;
+	padding: 0 0 8px 30px;
+	border-bottom: dashed 2px #31cde0;
+}
+.title-sub3 {
+	font-size: 1.8rem;
+	line-height: 1.35;
+	color: #666;
+	padding: 0 0 5px;
+	border-bottom: solid 1px #31cde0;
+}
+[class^="title-sub"] span {
+	font-size: 75%;
+	white-space: nowrap;
+	padding-left: 0.5em;
+}
+
+/* -- news -- */
+.news-list {
+	display: flex;
+	overflow: hidden;
+	flex-flow: row wrap;
+	justify-content: space-between;
+	margin-bottom: 25px;
+	border-top: dashed 1px #31cde0;
+}
+.news-list li {
+	text-indent: -120px;
+	box-sizing: border-box;
+	width: 49%;
+	padding: 10px 0 10px 120px;
+	border-bottom: dashed 1px #31cde0;
+	left: 101%;
+}
+.news-list li span {
+	display: inline-\block;
+	float: left;
+	width: 120px;
+}
+
+/* -- pagetop button -- */
+#pageTop {
+	position: fixed;
+	right: 20px;
+	bottom: -80px;
+	z-index: 9;
+	transition: all 1s ease-in-out;
+}
+.js-nav_in #pageTop {
+	bottom: 70px;
+}
+#pageTop a {
+	font-size: 0;
+	background-color: #fff;
+	text-align: center;
+	display: block;
+	width: 52px;
+	height: 52px;
+	border: solid 4px #31cde0;
+	border-radius: 10px;
+	box-shadow: 0 0 10px #fff, 0 0 20px #fff;
+}
+#pageTop a::before {
+	font-size: 4rem;
+	line-height: 52px;
+	color: #31cde0;
+	letter-spacing: 0;
+	display: block;
+	width: 52px;
+	margin: auto;
+	position: absolute;
+	right: 0;
+	left: 0;
+	animation: top_icon 1.6s linear infinite;
+}
+@keyframes top_icon {
+	10%,
+	90% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0;
+		transform: translateY(-20px);
+	}
+	51% {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+}
+#pageTop a:hover {
+	box-shadow: 0 0 10px #594a2a, 0 0 20px #764b00;
+}
+#pageTop a:hover::before {
+	opacity: 1;
+	transform: translateY(0);
+	animation: none;
+}
+
+/* -- layout image -- */
+.photo {
+	display: flex;
+	justify-content: space-between;
+}
+.photo span {
+	display: block;
+	margin: 0 5px;
+}
+.photo span:first-child {
+	margin-left: 0;
+}
+.photo span:last-child {
+	margin-right: 0;
+}
+.photo-r {
+	float: right;
+	width: 30%;
+	margin: 0 0 25px 25px;
+}
+.photo-l {
+	float: left;
+	width: 30%;
+	margin: 0 25px 25px 0;
+}
+.photo-c {
+	margin: 0 0 25px;
+}
+[class^="photo"] img {
+	box-sizing: border-box;
+	width: 100%;
+	border: solid 5px #fff;
+	box-shadow: 0 0 3px #333;
+}
+
+/* -- position layout -- */
+.center {
+	text-align: center;
+}
+.right {
+	text-align: right;
+}
+
+/* -- info contents -- */
+#Home #secInfo ul:not([class]),
+#Home #secInfo ol:not([class]),
+#free ul:not([class]),
+#free ol:not([class]) {
+	overflow: hidden;
+	margin: 1em 0;
+	padding-left: 30px;
+}
+#Home #secInfo ul:not([class]),
+#free ul:not([class]) {
+	list-style: disc;
+}
+#Home #secInfo ol:not([class]),
+#free ol:not([class]) {
+	list-style: decimal;
+}
+#Home #secInfo em,
+#free em {
+	font-style: italic;
+}
+
+
+
+/* -- Footer
+-------------------------------------------------------------------------------- */
+footer {
+	color: #fff;
+	background-color: #333;
+	text-align: center;
+	letter-spacing: 0.05rem;
+	overflow: hidden;
+	box-sizing: border-box;
+	width: 100%;
+	height: 50px;
+	padding: 19px 50px 0;
+}
+footer small {
+	font-size: 1.2rem;
+	float: right;
+}
+footer ul {
+	line-height: 18px;
+	display: table;
+	float: left;
+}
+footer ul li {
+	font-size: 1.4rem;
+	display: table-cell;
+	padding-right: 10px;
+}
+footer ul li a {
+	color: #fff;
+}
+footer ul li a.fa {
+	font-size: 0;
+}
+footer ul li a.fa::before {
+	font-size: 1.8rem;
+}
+footer ul:nth-child(2) {
+	margin-left: 50px;
+	padding-left: 50px;
+	border-left: solid 1px #fff;
+}
+footer ul:nth-child(2) li:not(:first-child)::before {
+	content: "/";
+	padding-right: 10px;
+}
+
+
+
+/* -- Media query
+-------------------------------------------------------------------------------- */
+@media screen and (max-width: 1400px) {
+	.news-list li {
+		width: 100%;
+	}
+	.photo-r,
+	.photo-l {
+		width: 50%;
+	}
+}
+@media screen and (max-width: 1000px) {
+	main > aside {
+		padding: 100px 50px;
+	}
+	.js-nav_out header .logo,
+	.nav-lesson {
+		top: 100px;
+	}
+	.nav-main {
+		width: 100%;
+		right: 0;
+	}
+	.photo-r,
+	.photo-l {
+		float: none;
+		width: 100%!important;
+		margin: 0 0 25px;
+	}
+}

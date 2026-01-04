@@ -1,7 +1,14 @@
 {% extends 'layout.twig' %}
+{% set title = 'Rice Movie' %}
+{% set page = 'rice_movie' %}
 
 {% block content %}
-	<h1>Rice flour bread video page</h1>
+	<div id="kv">
+		<h1 class="vis-title" lang="en"><i>Video lesson</i>明太フランス</h1>
+		<figure class="vis-img"><img src="https://media.tsukipan.site/2023/12/8987-576x720.jpg" fetchpriority="high"></figure>
+	</div>
 	<hr>
-	<p>{{ message }}</p>
+	<section>
+		<p>{{ message }}</p>
+	</section>
 {% endblock %}

@@ -1,7 +1,18 @@
 {% extends 'layout.twig' %}
+{% set title = '404 Not Found' %}
+{% set page = '404' %}
 
 {% block content %}
-	<h1>404 Not Found</h1>
-	<hr>
-	<p>{{ message }}</p>
+	<div id="kv">
+		<h1 class="vis-title" lang="en"><i>{{ title_main }}</i>{{ title_sub }}</h1>
+		<figure class="vis-img"><img src="/img/vis_provisional.webp" alt="TSUKIパン教室"></figure>
+	</div>
+
+	<section class="er404">
+		<h2 class="title-sub1">お探しのページが<br class="sp">見つかりませんでした</h2>
+		<p><img src="/img/logo_portrait.webp" alt="TSUKIパン教室"></p>
+		<p>お探しのページは一時的にアクセスできない状況にあるか、<br class="pc">移動もしくは削除された可能性があります。<br>
+		また、URL・ファイル名にタイプミスがないか再度ご確認ください。</p>
+		<p><a href="/" class="arw">TSUKIパン教室TOPページへ</a></p>
+	</section>
 {% endblock %}

@@ -1,7 +1,16 @@
 {% extends 'layout.twig' %}
+{% set title = 'About Us' %}
+{% set page = 'about' %}
 
 {% block content %}
-	<h1>About us</h1>
+	<div id="kv">
+		<h1 class="vis-title" lang="en"><i>About us</i>TSUKIパン教室のご紹介</h1>
+		<figure class="vis-img"><img src="https://media.tsukipan.site/2020/04/img1-1-900x720.jpg" fetchpriority="high"></figure>
+		<p class="vis-caption">TSUKIパン教室は国産小麦を使用した少人数制の手ごねパン教室です。<br>
+		パン作りを通して人生が豊かになるお手伝いをさせていただきます。</p>
+	</div>
 	<hr>
-	<p>{{ message }}</p>
+	<section>
+		<p>{{ message }}</p>
+	</section>
 {% endblock %}

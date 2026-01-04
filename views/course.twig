@@ -1,7 +1,16 @@
 {% extends 'layout.twig' %}
+{% set title = 'Course' %}
+{% set page = 'course' %}
 
 {% block content %}
-	<h1>Course</h1>
+	<div id="kv">
+		<h1 class="vis-title" lang="en"><i>Course</i>小麦パンのコースについて</h1>
+		<figure class="vis-img"><img src="https://media.tsukipan.site/2021/11/081-720x720.jpg" fetchpriority="high"></figure>
+		<p class="vis-caption">コース制は、1回1回のレッスンで技術と知識が身に付きます。<br>
+		難易度の高いパンに挑戦できる楽しさもあり、TSUKIパン教室ではメインのレッスンとなっています。</p>
+	</div>
 	<hr>
-	<p>{{ message }}</p>
+	<section>
+		<p>{{ message }}</p>
+	</section>
 {% endblock %}

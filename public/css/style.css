@@ -1,0 +1,232 @@
+@font-face {
+	font-family: "Gyate";
+	src: url("../fonts/Gyate-Luminescence.otf") format("opentype");
+	font-display: swap;
+}
+
+
+/* -- Reset style
+-------------------------------------------------------------------------------- */
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+	font-size: 100%;
+	vertical-align: baseline;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	-webkit-text-size-adjust: 100%;
+}
+html, body {
+	overflow: hidden;
+	width: 100%;
+	-webkit-overflow-scrolling: touch;
+}
+html {
+	font-size: 10px;
+	overflow-y: scroll;
+	scroll-behavior: smooth;
+}
+body {
+	font: 500 10px/1 "游ゴシック", YuGothic, "メイリオ", Meiryo, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "ＭＳ Ｐゴシック", Verdana, Roboto, "Droid Sans" ,sans-serif;
+	color: #666;
+	font-feature-settings: "palt";
+	background: #fff;
+	text-align: center;
+	letter-spacing: 0.01em;
+}
+@media all and (-ms-high-contrast:none) {
+	body {
+		font-family: "メイリオ", Meiryo, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+	}
+}
+article, aside, canvas, details, figcaption, figure,
+footer, header, main, div, menu, nav, section, summary {
+	display: block;
+	box-sizing: border-box;
+}
+h2, h3, h4, h5, h6 {
+	font-family: "Gyate" ,sans-serif;
+	font-weight: 600;
+	letter-spacing: 0.05em;
+}
+address, em, s, cite, q, dfn, abbr, time, code, var, samp, kbd, sub, sup, i, mark, ruby {
+	font-weight: 500;
+	font-style: normal;
+}
+fieldset, img {
+	vertical-align: top;
+	border: 0;
+}
+img {
+	width: auto;
+	max-width: 100%;
+	height: auto;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote::before,
+blockquote::after,
+q::before,
+q::after {
+	content: "";
+	content: none;
+}
+a {
+	font-size: 100%;
+	background: transparent;
+	vertical-align: baseline;
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+ins {
+	color: #000;
+	background-color: #31cde0;
+	text-decoration: none;
+}
+mark {
+	font-weight: bold;
+	font-style: italic;
+	color: #000;
+	background-color: #31cde0;
+}
+del {
+	text-decoration: line-through;
+}
+abbr[title], dfn[title] {
+	cursor: help;
+	border-bottom: 1px dotted #000;
+}
+table {
+	font-size: inherit;
+	border-spacing: 0;
+	border-collapse: collapse;
+}
+ul, ol {
+	list-style: none;
+}
+hr {
+	display: block;
+	height: 1px;
+	margin: 1em 0;
+	padding: 0;
+	border: 0;
+	border-top: 1px solid #ccc;
+}
+pre, code, kbd, samp, tt {
+	font-family: monospace;
+	line-height: 100%;
+}
+sup {
+	font-size: 50%;
+	vertical-align: top;
+}
+sub {
+	vertical-align: text-bottom;
+}
+input, button, textarea, select {
+	font-family: "游ゴシック", YuGothic, "メイリオ", Meiryo, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "ＭＳ Ｐゴシック", Verdana, Roboto, "Droid Sans", sans-serif;
+	background: none;
+	margin: 0;
+	padding: 0;
+	border: none;
+	border-radius: 0;
+	outline: none;
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+}
+input, select {
+	vertical-align: middle;
+}
+textarea {
+	resize: none;
+}
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+	margin: 0;
+	-webkit-appearance: none;
+}
+input[type="number"] {
+	-moz-appearance: textfield;
+}
+::-ms-expand {
+	display: none;
+}
+select::-ms-expand {
+	display: none;
+}
+::placeholder {
+	color: #b9b9b9;
+}
+:-ms-input-placeholder {
+	color: #b9b9b9;
+}
+::-ms-input-placeholder {
+	color: #b9b9b9;
+}
+:focus::placeholder {
+	color: transparent;
+}
+:focus:-ms-input-placeholder {
+	color: transparent;
+}
+:focus::-ms-input-placeholder {
+	color: transparent;
+}
+*::selection {
+	color: #fff;
+	background: #31cde0;
+}
+*::-moz-selection {
+	color: #fff;
+	background: #31cde0;
+}
+
+
+
+/* -- Font
+-------------------------------------------------------------------------------- */
+*[lang="en"], i {
+	font-family: "Fredericka the Great", cursive;
+}
+
+
+
+/* -- Overwrite
+-------------------------------------------------------------------------------- */
+#fp-nav.right ul li a span {
+	background: #31cde0;
+	box-shadow: 0 0 5px #fff, 0 0 8px #fff;
+	transition: all 0.5s ease-in-out;
+}
+.js-nav_in #fp-nav.right ul li a span {
+	background: #fff;
+	box-shadow: 0 0 5px #31cde0, 0 0 8px #31cde0;
+}
+
+
+
+
+
+
+
+
+#lesson p.sp.pc {
+	display: block;
+}
+section {
+	text-align: center;
+}

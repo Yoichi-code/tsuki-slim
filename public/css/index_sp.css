@@ -1,0 +1,400 @@
+@charset "utf-8";
+
+
+/* -- Slider
+-------------------------------------------------------------------------------- */
+#kv {
+	background: #31cde0 url(/img/og-image.webp) no-repeat center center / 750px auto;
+}
+#kv:has(.show_.zoom_) {
+	background: #fff;
+}
+.vis-box {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+}
+.vis-box.zoom_ {
+	opacity: 1;
+	z-index: 1;
+}
+.vis-box.show_ {
+	z-index: 3;
+}
+.vis-img img {
+	opacity: 0;
+	z-index: 1;
+	transition: opacity 2s linear, filter 3s linear;
+	filter: blur(10px);
+}
+.vis-box.show_ .vis-img img {
+	opacity: 1;
+}
+.vis-box.zoom_ .vis-img img {
+	animation: slide_zoom 10s linear infinite;
+	filter: blur(0);
+}
+@keyframes slide_zoom {
+	0% {
+		transform: scale(1);
+	}
+	100% {
+		transform: scale(1.2);
+	}
+}
+.vis-title {
+	color: #fff;
+	white-space: nowrap;
+	opacity: 0;
+	text-shadow: 0 0 3px #000, 0 0 5px #a68b62, 0 0 8px #a68b62;
+	transform: translateY(-30px);
+	transition: all 1s ease-in;
+}
+.vis-box.show_.zoom_ .vis-title {
+	opacity: 1;
+	transform: translateY(0);
+}
+.vis-box.zoom_ .vis-title {
+	opacity: 1;
+	transform: translateY(30px);
+}
+.vis-title i {
+	font-size: 3rem;
+}
+.vis-caption {
+	font: 600 1.2rem/2 "Gyate" ,sans-serif;
+	color: #fff;
+	background-color: rgba(49, 205, 224, 0.75);
+	display: block;
+	box-sizing: border-box;
+	width: 100%;
+	padding: 25px;
+	opacity: 0;
+	box-shadow: 0 0 10px #a68b62;
+	text-shadow: 0 0 5px #000;
+	position: absolute;
+	right: -25px;
+	bottom: 75px;
+	transition: all 2s cubic-bezier(0.17,0.67,0.83,0.67);
+}
+.vis-caption span.arw {
+	color: #fff;
+}
+.vis-caption span.arw::before,
+.vis-caption span.arw::after {
+	border-bottom-color: #fff;
+	border-left-color: #fff;
+}
+.vis-box.show_ .vis-caption {
+	opacity: 1;
+	bottom: 25px;
+}
+.vis-box:only-of-type .vis-img img,
+.vis-box:only-of-type .vis-title {
+	opacity: 1!important;
+	transform: inherit!important;
+	animation: inherit!important;
+	transition: inherit!important;
+	filter: inherit!important;
+}
+#kv .down {
+	font-size: 0;
+	color: #fff;
+	text-align: center;
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	z-index: 3;
+}
+#kv .down i {
+	font-size: 4rem;
+	animation: scroll_icon 1.6s linear infinite;
+}
+@keyframes scroll_icon {
+	0% {
+		opacity: 0;
+		transform: translateY(-10px);
+	}
+	40%,
+	60% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+}
+
+
+
+/* -- Contents
+-------------------------------------------------------------------------------- */
+section[id^="sec"] {
+	padding: 45% 10px 20%;
+}
+section[id^="sec"]:not(:last-of-type) {
+	margin-bottom: -15%;
+}
+section[id^="sec"]:last-of-type {
+	padding-bottom: 10%;
+}
+.img-bg {
+	background-color: #fff;
+	display: block;
+	overflow: hidden;
+	width: 120%;
+	height: 100%;
+	border-top: solid 100px #fff;
+	position: absolute;
+	top: 0;
+	z-index: -1;
+}
+.img-bg span {
+	background: fixed no-repeat center center / cover;
+	display: block;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	transition: all 2s linear;
+}
+.img-bg span.in {
+	opacity: 0.75;
+}
+section[id^="sec"]:nth-of-type(odd) .img-bg {
+	left: 0;
+	transform: skewY(10deg);
+	transform-origin: left top;
+}
+section[id^="sec"]:nth-of-type(odd) .img-bg span {
+	transform: skewY(-10deg);
+	transform-origin: left top;
+}
+section[id^="sec"]:nth-of-type(even) .img-bg {
+	right: 0;
+	transform: skewY(-10deg);
+	transform-origin: right top;
+}
+section[id^="sec"]:nth-of-type(even) .img-bg span {
+	transform: skewY(10deg);
+	transform-origin: right top;
+}
+#secInfo .img-bg span {
+	background-image: url(/img/index/info_bg.webp);
+}
+#secAbout .img-bg span {
+	background-image: url(/img/index/about_bg.webp);
+}
+#secCourse .img-bg span {
+	background-image: url(/img/index/course_bg.webp);
+}
+#secOther .img-bg span {
+	background-image: url(/img/index/other_bg.webp);
+}
+#secRice .img-bg span {
+	background-image: url(/img/index/rice_bg.webp);
+}
+section[id^="sec"] h2 {
+	background-color: rgba(255, 255, 255, 0.75);
+	margin: 0 0 -25px;
+	padding: 25px 40px 50px;
+	position: relative;
+	left: -20px;
+}
+#secAbout h2,
+#secRice h2 {
+	text-align: right;
+	left: 20px;
+}
+.img-sub {
+	background-color: rgba(49, 205, 224, 0.75);
+	display: block;
+	margin: 50px 10px 25px -10px;
+	position: relative;
+}
+.img-sub img {
+	width: 100%;
+	position: relative;
+}
+.cont {
+	font: 500 1.4rem/2 "Gyate" ,sans-serif;
+	background: #fff no-repeat right 5px bottom 5px;
+	margin: 0 10px;
+	padding: 30px 13px;
+	border: dashed 2px #31cde0;
+	box-shadow: 0 0 0 10px #fff, 5px 5px 20px #000;
+}
+.cont + .cont {
+	margin-top: 50px;
+}
+.cont p + p {
+	margin-top: 2em;
+}
+#secInfo .info-lesson li {
+	margin: 10px 0;
+}
+#secInfo .info-lesson h4 {
+	font-size: 1.6rem;
+	text-align: center;
+}
+#secInfo .info-lesson figcaption {
+	font-size: 1.2rem;
+	padding-top: 5px;
+}
+#secInfo .info-lesson img {
+	box-sizing: border-box;
+	width: 100%;
+	border: solid 5px #fff;
+	box-shadow: 0 0 3px #333;
+}
+#secAbout .cont {
+	background-image: url(/img/bg_illust1.webp);
+	background-size: 142px auto;
+}
+#secCourse .cont {
+	background-image: url(/img/bg_illust3.webp);
+	background-size: 142px auto;
+}
+#secOther ul {
+	padding: 10px;
+	position: relative;
+	top: -10px;
+}
+#secOther ul li:not(:first-child) {
+	margin-top: 20px;
+}
+#secOther ul li:nth-child(-n+2) a,
+#secOther ul li div {
+	display: block;
+	padding-top: 200px;
+	position: relative;
+}
+#secOther ul li:nth-child(1) a {
+	background: url(/img/index/other_img1.webp) no-repeat center center / cover;
+}
+#secOther ul li:nth-child(2) a {
+	background: url(/img/index/other_img2.webp) no-repeat center center / cover;
+}
+#secOther ul li:nth-child(3) div {
+	background: url(/img/index/other_img3.webp) no-repeat center center / cover;
+}
+#secOther ul li h3 {
+	font-size: 1.2rem;
+	color: #6e3a21;
+	background-color: rgba(255, 255, 255, 0.75);
+	box-sizing: border-box;
+	width: 100%;
+	padding: 5px 15px;
+	text-shadow: 0 0 1px #b9a49b, 0 0 3px #fff, 0 0 5px #fff;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+#secOther ul li h3 i {
+	font-size: 2.8rem;
+	display: block;
+	padding-bottom: 5px;
+}
+#secOther ul li p {
+	font-size: 1.4rem;
+	line-height: 1.5;
+	color: #fff;
+	background-color: rgba(49, 205, 224, 0.75);
+	overflow: hidden;
+	box-sizing: border-box;
+	padding: 15px;
+	text-shadow: 0 0 1px #b9a49b, 0 0 3px #000, 0 0 5px #000;
+	position: relative;
+}
+#secOther ul li div p::before {
+	content: "";
+	background: url(/img/index/bg_mail.webp) no-repeat 0 center / 100% auto;
+	display: block;
+	width: 40%;
+	height: 200%;
+	margin: auto;
+	opacity: 0.5;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	transform: rotate(-20deg);
+}
+#secOther a.arw {
+	font-size: 1.8rem;
+	color: #fff;
+}
+#secOther a.arw::before,
+#secOther a.arw::after {
+	border-bottom-color: #fff;
+	border-left-color: #fff;
+}
+.no-data {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100px;
+}
+
+
+
+/* -- Fade in
+-------------------------------------------------------------------------------- */
+.fade,
+.fade li {
+	opacity: 0;
+	transition: all 1s ease;
+}
+.fade {
+	transform: translateY(100px);
+}
+.fade li {
+	position: relative;
+}
+.fade.in,
+.fade.in li {
+	opacity: 1;
+	transform: translateY(0)!important;
+}
+.news-list {
+	overflow: hidden;
+}
+.news-list li {
+	left: 101%;
+}
+.cont.fade.in .news-list li {
+	left: 0;
+}
+.img-sub img {
+	top: 0;
+	left: 0;
+	transition: all 1s ease;
+	transition-delay: 1s;
+}
+.img-sub.fade.in img {
+	top: 25px;
+	left: 25px;
+}
+.img-sub.fade.in {
+	left: 0!important;
+}
+#secOther li {
+	transform: translateY(100px);
+}
+.fade.in li:nth-child(1) {
+	transition-delay: 0.5s;
+}
+.fade.in li:nth-child(2) {
+	transition-delay: 0.75s;
+}
+.fade.in li:nth-child(3) {
+	transition-delay: 1s;
+}
+.fade.in li:nth-child(4) {
+	transition-delay: 1.25s;
+}
+.fade.in li:nth-child(5) {
+	transition-delay: 1.5s;
+}
+.fade.in li:nth-child(6) {
+	transition-delay: 1.75s;
+}

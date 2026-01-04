@@ -1,7 +1,15 @@
 {% extends 'layout.twig' %}
+{% set title = 'Students' %}
+{% set page = 'students' %}
 
 {% block content %}
-	<h1>Students</h1>
+	<div id="kv">
+		<h1 class="vis-title" lang="en"><i>Dear Studens</i>生徒さんへ</h1>
+		<figure class="vis-img"><img src="https://media.tsukipan.site/2020/06/001-1-725x720.jpg" fetchpriority="high"></figure>
+		<p class="vis-caption">TSUKIパン教室のコース制生徒さん専用ページです。<br>大変申し訳ありませんが、生徒さん以外は入室できません。</p>
+	</div>
 	<hr>
-	<p>{{ message }}</p>
+	<section>
+		<p>{{ message }}</p>
+	</section>
 {% endblock %}

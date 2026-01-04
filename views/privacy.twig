@@ -1,7 +1,15 @@
 {% extends 'layout.twig' %}
+{% set title = 'Privacy Policy' %}
+{% set page = 'privacy' %}
 
 {% block content %}
-	<h1>Privacy Policy</h1>
+	<div id="kv">
+		<h1 class="vis-title" lang="en"><i>Privacy policy</i>個人情報保護方針</h1>
+		<figure class="vis-img"><img src="/img/vis_provisional.webp" alt="TSUKIパン教室"></figure>
+		<p class="vis-caption">TSUKIパン教室の個人情報保護方針です。</p>
+	</div>
 	<hr>
-	<p>{{ message }}</p>
+	<section>
+		<p>{{ message }}</p>
+	</section>
 {% endblock %}

@@ -1,12 +1,28 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-{% include 'parts/head.twig' with { seo: seo } %}
+	{% include 'parts/head.twig' with { seo: seo, page: page } %}
 </head>
 
 <body>
-	{% include 'parts/header.twig' %}
-	{% block content %}
-	{% endblock %}
+{% include 'parts/header.twig' %}
+
+<!-- contents / -->
+<main role="main">
+{% block content %}
+{% endblock %}
+
+{% include 'parts/sidebar.twig' %}
+</main>
+<!-- / contents -->
+
+{% include 'parts/footer.twig' %}
+
+<script src="/js/jquery-3.2.1.min.js"></script>
+<script src="/js/common.js"></script>
+{# "page"が"index"だったら #}
+{% if page == 'index' %}
+<script src="/js/index.js"></script>
+{% endif %}
 </body>
 </html>

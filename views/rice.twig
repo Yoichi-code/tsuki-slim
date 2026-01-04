@@ -1,7 +1,17 @@
 {% extends 'layout.twig' %}
+{% set title = 'Rice Flour Bread' %}
+{% set page = 'rice' %}
 
 {% block content %}
-	<h1>Rice flour bread</h1>
+	<div id="kv">
+		<h1 class="vis-title" lang="en"><i>Rice flour bread</i>米粉パンLesson</h1>
+		<figure class="vis-img"><img src="https://media.tsukipan.site/2024/05/IMG_4536-720x720.jpg" fetchpriority="high"></figure>
+		<p class="vis-caption">グルテンフリーの米粉パンが学べます。<br>
+		今までの米粉パンでは満足できなかった方も<br>
+		ぜひ作ってみてください♪</p>
+	</div>
 	<hr>
-	<p>{{ message }}</p>
+	<section>
+		<p>{{ message }}</p>
+	</section>
 {% endblock %}

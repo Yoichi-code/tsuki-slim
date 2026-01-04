@@ -1,0 +1,949 @@
+@charset "utf-8";
+
+
+/* -- Link
+-------------------------------------------------------------------------------- */
+a {
+	-webkit-tap-highlight-color: rgba(49,205,224, 0.5);
+}
+a,
+[type="submit"] {
+	color: #333;
+	text-decoration: none;
+	outline: none;
+}
+a:hover,
+a:active,
+a:focus {
+	color: #003876;
+}
+a.arw,
+a span.arw {
+	color: #31cde0;
+	text-align: right;
+	display: block;
+	padding-right: 40px;
+	position: relative;
+}
+a.arw::after,
+a span.arw::after,
+a.arw::before,
+a span.arw::before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 50%;
+	right: 0;
+}
+a.arw::after,
+a span.arw::after {
+	width: 30px;
+	height: 0;
+	border-bottom: solid 1px #31cde0;
+}
+a.arw::before,
+a span.arw::before {
+	width: 0;
+	height: 0;
+	margin-top: -4px;
+	border-top: solid 2px transparent;
+	border-right: solid 4px transparent;
+	border-bottom: solid 2px #31cde0;
+	border-left: solid 4px #31cde0;
+}
+
+
+
+/* -- Layout
+-------------------------------------------------------------------------------- */
+.pc {
+	display: none;
+}
+header,
+main,
+footer {
+	text-align: left;
+}
+img {
+	max-width: 100%;
+}
+body::before {
+	content: "";
+	background-color: #98e6ef;
+	display: block;
+	width: 50%;
+	height: 120%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -1;
+	max-height: 100vh;
+}
+main {
+	font-size: 1.4rem;
+	overflow: hidden;
+}
+main > section,
+main > aside {
+	padding: 50px 10px;
+	position: relative;
+	z-index: 1;
+}
+.notice {
+	background: #fff url(/img/bg_notice.webp) no-repeat center 70% / 80% auto!important;
+}
+
+
+
+/* -- Headerer
+-------------------------------------------------------------------------------- */
+header,
+header nav {
+	background: url(/img/head_bg1.webp) no-repeat center 0,
+	url(/img/head_bg2.webp) repeat-x center 0;
+	background-size: auto 63px,  auto 18px;
+	width: 100%;
+	position: fixed;
+	top: 0;
+	transition: all 0.75s ease-in-out;
+}
+header {
+	background-color: rgba(255, 255, 255, 0.75);
+	height: 100px;
+	right: 0;
+	z-index: 9;
+}
+.js-nav_out header {
+	background-color: rgba(255, 255, 255, 0);
+}
+header .logo {
+	font-size: 0;
+	background: url(/img/logo_landscape.webp) no-repeat center center;
+	background-size: 270px auto;
+	display: block;
+	width: 270px;
+	height: 75px;
+	position: absolute;
+	top: 18px;
+	left: 10px;
+	z-index: 3;
+	transition: all 1s ease-in-out;
+}
+.js-nav_out header .logo {
+	top: -79px;
+}
+.js-nav_out.js-nav_slide header .logo {
+	top: 20px;
+}
+header .logo a {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+header nav {
+	background-color: #31cde0;
+	overflow-y: auto;
+	box-sizing: border-box;
+	height: 100%;
+	padding: 120px 0 40px;
+	right: -100%;
+}
+body:not(#Home) header nav::before {
+	content: "← Tap to site top";
+	font: 500 1.4rem/1 "Fredericka the Great", cursive;
+	color: #fff;
+	letter-spacing: 0.1em;
+	position: absolute;
+	top: 130px;
+	right: 10px;
+	transform: rotate(35deg);;
+}
+#spNaviBtn {
+	display: block;
+	width: 30px;
+	height: 30px;
+	position: fixed;
+	top: 40px;
+	right: 20px;
+	z-index: 9;
+}
+#spNaviBtn span {
+	font-size: 0;
+	background-color: #fff;
+	display: block;
+	width: 26px;
+	height: 26px;
+	cursor: pointer;
+	border: solid 2px #31cde0;
+	border-radius: 5px;
+	box-shadow: 0 0 5px #fff, 0 0 10px #fff;
+	position: relative;
+}
+#spNaviBtn::before,
+#spNaviBtn span::before,
+#spNaviBtn span::after {
+	content: "";
+	background: #31cde0;
+	display: block;
+	width: 15px;
+	height: 2px;
+	margin: auto;
+	position: absolute;
+	right: 0;
+	left: 0;
+	transition: all 0.7s ease-in-out;
+}
+#spNaviBtn::before {
+	top: 0;
+	right: auto;
+	bottom: 0;
+	left: 8px;
+	z-index: 2;
+}
+#spNaviBtn span::before {
+	top: 6px;
+}
+#spNaviBtn span::after {
+	top: 18px;
+}
+.js-nav_slide header nav {
+	right: 0;
+}
+.js-nav_slide #spNaviBtn::before {
+	height: 0;
+	opacity: 0;
+}
+.js-nav_slide #spNaviBtn span::before {
+	top: 12px;
+	transform: rotate(45deg);
+}
+.js-nav_slide #spNaviBtn span::after {
+	top: 12px;
+	transform: rotate(135deg);
+}
+header nav .nav-main {
+	padding: 0 20px;
+}
+header nav .nav-lesson {
+	margin: 10px 25px 0;
+}
+header nav .nav-sns {
+	text-align: center;
+	display: flex;
+	justify-content: space-around;
+	padding: 20px 10px 0;
+}
+header nav a {
+	font: 500 1rem/1 "Gyate" ,sans-serif;
+	color: #fff;
+	letter-spacing: 0.05em;
+	display: inline-block;
+	text-shadow: 0 0 5px #594a2a;
+}
+header nav .nav-main a {
+	margin-bottom: 15px;
+}
+.nav-lesson a {
+	background-color: #a68b62;
+	text-align: center;
+	display: block;
+	padding: 15px 0;
+	border: dashed 2px #fff;
+	box-shadow: 0 0 0 5px #a68b62, 0 0 10px #594a2a;
+}
+header nav .nav-sns a {
+	font-size: 1.2rem;
+	color: #594a2a;
+}
+header nav .nav-sns a b {
+	font-family: "Gyate" ,sans-serif;
+}
+header nav [class^="nav-"] a::before {
+	font-size: 3rem;
+}
+header nav .nav-main a::before {
+	display: block;
+	float: left;
+}
+header nav .nav-sns a::before {
+	display: block;
+	margin: 0 auto 10px;
+}
+.nav-sns li:nth-child(n+4) a::before {
+	content: "";
+	background: #594a2a no-repeat center center / 14px auto;
+	width: 28px;
+	height: 28px;
+	border-radius: 7px;
+	box-shadow: 0 0 5px #764b00;
+}
+.nav-sns li:nth-child(4) a::before {
+	background-image: url(/img/icon_room.webp);
+}
+.nav-sns li:nth-child(5) a::before {
+	background-image: url(/img/icon_blog.webp);
+}
+header nav .nav-main a::before,
+header nav .nav-lesson a::before {
+	text-align: center;
+	width: 40px;
+	padding: 3px 10px 0 0;
+}
+header nav .nav-main a i,
+header nav .nav-lesson a i {
+	font-size: 2.2rem;
+	letter-spacing: 0.07em;
+	display: inline-block;
+	padding-bottom: 5px;
+}
+header nav .nav-main a span,
+header nav .nav-lesson a span {
+	font-family: "Gyate" ,sans-serif;
+}
+header nav .nav-main a span {
+	white-space: nowrap;
+	display: block;
+}
+header nav .nav-lesson a span {
+	padding-left: 10px;
+}
+
+
+
+/* -- Contents
+-------------------------------------------------------------------------------- */
+section strong {
+	color: #31cde0;
+}
+section figcaption {
+	font-size: 1.2rem;
+	margin-top: 10px;
+}
+
+/* -- main visual -- */
+#kv {
+	background-color: #fff;
+	box-sizing: border-box;
+	height: calc(100vh - 40px);
+	margin: 20px;
+	position: relative;
+}
+.vis-box {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+}
+.vis-title {
+	font: 600 1.6rem/1 "Gyate" ,sans-serif;
+	color: #6e3a21;
+	text-align: center;
+	width: 100%;
+	text-shadow: 0 0 3px #666, 0 0 5px #fff, 0 0 8px #fff;
+	position: absolute;
+	bottom: 50%;
+	z-index: 2;
+}
+.vis-title i {
+	font-size: 5rem;
+	display: block;
+	margin-bottom: 10px;
+}
+.vis-img {
+	text-align: center;
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
+	z-index: 0;
+}
+.vis-img img {
+	width: 100%;
+	height: 100%;
+	opacity: 0.5;
+	object-fit: cover;
+}
+
+/* -- access and calendar -- */
+aside {
+	background: url(/img/bg_aside.webp) repeat center center;
+	text-align: center;
+}
+.access {
+	background-color: #fff;
+	margin: 0 10px;
+	padding: 13px;
+	border: dashed 2px #31cde0;
+	box-shadow: 0 0 0 8px #fff;
+}
+.access address {
+	font-size: 1.2rem;
+	line-height: 1.5;
+}
+.access address h2 {
+	width: 141px;
+	margin: 0 auto 10px;
+}
+.access iframe {
+	width: 100%;
+	height: 220px;
+	margin-top: 10px;
+}
+aside .calendar-wrap {
+	font-family: "Gyate" ,sans-serif;
+	margin: 40px 0 0;
+	position: relative;
+}
+aside .calendar-wrap h3,
+#calendarTab li,
+#partTab li {
+	font: 500 1.8rem/1 "Gyate" ,sans-serif;
+	color: #fff;
+	padding: 8px 0;
+	text-shadow: 0 0 5px #000;
+}
+aside .calendar-wrap h3 {
+	background: #31cde0;
+	margin: 0 10px;
+	border: dashed 2px #fff;
+	box-shadow: 0 0 0 8px #31cde0;
+}
+#calendarTab,
+#partTab {
+	background-color: #31cde0;
+	vertical-align: top;
+	display: table;
+	box-sizing: border-box;
+	width: calc(100% - 4px);
+	margin: 0 2px;
+	padding: 0 8px;
+}
+#partTab {
+	padding-bottom: 8px;
+}
+#calendarTab li,
+#partTab li {
+	font-size: 1.2rem;
+	display: table-cell;
+	border-right: dashed 2px #fff;
+	border-bottom: dashed 2px #fff;
+	transition: all 0.3s ease;
+}
+#calendarTab li:first-child,
+#partTab li:first-child {
+	border-left: dashed 2px #fff;
+}
+#calendarTab li.active,
+#partTab li.active {
+	text-shadow: 0 0 2px #31cde0, 0 0 5px #ff0, 0 0 8px #ff0;
+}
+#calendarTab li {
+	width: 50%;
+}
+#partTab li {
+	line-height: 1.25;
+	vertical-align: middle;
+	width: 33.333%;
+}
+#calendarTab li::before {
+	font: 500 1.6rem/1 FontAwesome;
+	vertical-align: text-top;
+	display: inline-block;
+	margin-right: 10px;
+}
+#calendarTab li:not(.active)::before {
+	content: "\f079";
+}
+#calendarTab li.active::before {
+	content: "\f019";
+}
+#support {
+	font-size: 0;
+	background-color: #31cde0;
+	float: right;
+	margin: -8px 2px 0 -55px;
+	padding: 0 8px 8px;
+}
+#support a {
+	text-decoration: none;
+	display: block;
+	width: 35px;
+	border: dashed 2px #fff;
+	border-top: none;
+}
+#support a::after {
+	content: "\f128";
+	font: 500 2rem/35px FontAwesome;
+	color: #fff;
+	display: block;
+}
+.calendar-wrap .calendar,
+.calendar div[class^="table-"] {
+	width: 100%;
+	opacity: 0;
+	position: absolute;
+	bottom: 0;
+	z-index: -1;
+	transform: translateY(-30px);
+	transition: all 1s ease;
+}
+.calendar-wrap .calendar {
+	box-sizing: border-box;
+	width: calc(100% - 4px);
+	margin: 0 2px;
+	right: 0;
+	left: 0;
+}
+.calendar-wrap .calendar.active,
+.calendar div[class^="table-"].active {
+	opacity: 1;
+	position: relative;
+	z-index: 1;
+	transform: translateY(0);
+}
+.calendar h4 {
+	font: 500 2.4rem/1 "Fredericka the Great", cursive;
+	color: #2fb3c3;
+	letter-spacing: 0.1em;
+	margin: 20px 0 10px;
+	text-shadow: 0 0 2px #31cde0, 0 0 5px #ff0, 0 0 8px #ff0;
+}
+.calendar-wrap table {
+	width: 100%;
+}
+.calendar-wrap table caption {
+	font-size: 1.8rem;
+	color: #fff;
+	background-color: #31cde0;
+	padding: 10px 0;
+	text-shadow: 0 0 3px #000;
+}
+.calendar table th,
+.calendar table td {
+	background-color: #fff;
+	background-clip: padding-box;
+	width: 14.286%;
+	border: solid 1px #31cde0;
+}
+.calendar table th {
+	font-size: 1.4rem;
+	padding: 5px 0;
+}
+.calendar table td.day-box {
+	font-family: "Fredericka the Great", cursive;
+	color: #000;
+	height: 34px;
+	position: relative;
+}
+.calendar .sat {
+	background-color: #f4fcff;
+}
+.calendar th.sat {
+	color: rgb(35, 45, 145);
+}
+.calendar .sun,
+.calendar .holiday {
+	background-color: #fff8fe;
+}
+.calendar th.sun {
+	color: rgb(185, 45, 45);
+}
+.calendar td.today {
+	color: #fff!important;
+	background-color: #a68b62;
+}
+.day-number {
+	font-size: 1.4rem;
+	text-align: center;
+	width: 2em;
+	padding: 5px 0 1em;
+}
+.calendar-mark {
+	font-size: 1.8rem;
+	text-align: right;
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
+	padding: 0.8em 5px 5px 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.full .calendar-mark {
+	font: 600 1.2rem/1 "Gyate" ,sans-serif;
+	color: #f30!important;
+	display: flex;
+	align-items: end;
+	justify-content: flex-end;
+}
+.calendar-daylink {
+	text-align: right;
+	text-decoration: underline;
+	display: block;
+	box-sizing: border-box;
+	width: 100%;
+	height: 100%;
+	padding: 0.6em 5px 5px 0;
+	position: absolute;
+	top: 0;
+}
+.calendar-daylink,
+.td_blue {
+	color: #00f!important;
+	background-color: rgba(51, 204, 225, 0.15);
+}
+.calendar-daylink:hover {
+	background-color: rgba(51, 204, 225, 0.4);
+}
+.RB .calendar-daylink,
+.td_orange {
+	color: rgb(255, 81, 0)!important;
+	background-color: rgba(225, 170, 51, 0.15);
+}
+.RB .calendar-daylink:hover {
+	background-color: rgba(225, 170, 51, 0.4);
+}
+#supportWindow {
+	background-color: rgba(49, 205, 224, 0.75);
+	box-sizing: border-box;
+	width: 0;
+	height: 100%;
+	padding: 20px 4%;
+	opacity: 0;
+	position: fixed;
+	top: 0;
+	left: -8%;
+	z-index: 0;
+	transition: all 1s ease;
+}
+.js-support_open #supportWindow {
+	width: 100%;
+	opacity: 1;
+	left: 0;
+	z-index: 4;
+}
+#supportWindow figure {
+	background-color: #fff;
+	margin: auto;
+	padding: 10px;
+	border: dashed 2px #31cde0;
+	box-shadow: 0 0 0 8px #fff;
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+}
+#supportWindow figure span {
+	font-size: 0;
+	background-color: #fff;
+	display: block;
+	width: 26px;
+	height: 26px;
+	border: solid 2px #31cde0;
+	border-radius: 5px;
+	box-shadow: 0 0 5px #fff, 0 0 10px #fff;
+	position: absolute;
+	top: -50px;
+	left: -10px;
+}
+#supportWindow figure span::before {
+	content: "\f00d";
+	font: 500 2rem/26px FontAwesome;
+	color: #31cde0;
+	display: block;
+}
+#repletion {
+	background-color: #fff;
+	margin: 15px 10px 0;
+	border: dashed 2px #31cde0;
+	box-shadow: 0 0 0 8px #fff;
+}
+#repletion h4 {
+	font-size: 1.6rem;
+	color: #a27837;
+	text-align: center;
+	margin-bottom: 5px;
+}
+#repletion ul {
+	display: block;
+	padding: 0 15px;
+}
+#repletion ul li {
+	line-height: 1.5;
+	text-align: left;
+	padding: 15px 10px;
+	border-bottom: dashed 2px #31cde0;
+}
+#repletion ul li:last-child {
+	border-bottom: none;
+}
+#repletion ul + p {
+	text-align: left;
+	margin-top: 15px;
+	padding: 15px;
+	border-top: dashed 2px #31cde0;
+}
+#repletion ul + p b {
+	display: inline-block;
+	padding: 2px 5px;
+}
+
+/* -- title -- */
+.title-main {
+	font-size: 1.4rem;
+	color: #6e3a21;
+	box-sizing: border-box;
+	width: 100%;
+	text-shadow: 0 0 1px #b9a49b, 0 0 3px #eee, 0 0 5px #000;
+}
+.title-main i {
+	font-size: 4rem;
+	display: block;
+	margin-bottom: 10px;
+}
+.title-sub1 {
+	font-size: 1.6rem;
+	line-height: 1.35;
+	color: #fff;
+	background: #31cde0;
+	margin: 0 0 35px;
+	padding: 10px 70px 10px 10px;
+	border-top: dashed 2px #fff;
+	border-bottom: dashed 2px #fff;
+	box-shadow: 0 5px 0 #31cde0, 0 -5px 0 #31cde0;
+	text-shadow: 1px 1px 3px #333;
+	position: relative;
+}
+.title-sub1::after {
+	content: "";
+	background: url(/img/icon_title-sub1.webp) no-repeat 0 0 / cover;
+	display: block;
+	width: 60px;
+	height: 71px;
+	position: absolute;
+	right: 5px;
+	bottom: -20px;
+	transform: rotate(-25deg);
+}
+.title-sub2 {
+	font-size: 1.8rem;
+	line-height: 1.35;
+	color: #31cde0;
+	background: url(/img/icon_title-sub2.webp) no-repeat 0 2px / auto 20px;
+	margin: 35px 0 25px;
+	padding: 3px 0 5px 25px;
+	border-bottom: dashed 1px #31cde0;
+}
+.title-sub3 {
+	font-size: 1.6rem;
+	line-height: 1.35;
+	color: #666;
+	padding: 0 0 5px;
+	border-bottom: solid 1px #31cde0;
+}
+[class^="title-sub"] span {
+	font-size: 75%;
+	white-space: nowrap;
+	display: inline-block;
+}
+
+/* -- news -- */
+.news-list {
+	margin-bottom: 25px;
+	border-top: dashed 1px #31cde0;
+}
+.news-list li {
+	font-size: 1.4rem;
+	padding: 10px 0;
+	border-bottom: dashed 1px #31cde0;
+}
+.news-list li span {
+	display: block;
+}
+
+/* -- pagetop button -- */
+#pageTop {
+	position: fixed;
+	right: 20px;
+	bottom: -40px;
+	z-index: 9;
+	transition: all 1s ease-in-out;
+}
+.js-nav_out #pageTop {
+	bottom: 15px;
+}
+#pageTop a {
+	font-size: 0;
+	background-color: #fff;
+	text-align: center;
+	display: block;
+	width: 26px;
+	height: 26px;
+	border: solid 2px #31cde0;
+	border-radius: 5px;
+	box-shadow: 0 0 5px #fff, 0 0 10px #fff;
+}
+#pageTop a::before {
+	font-size: 2rem;
+	line-height: 26px;
+	color: #31cde0;
+	letter-spacing: 0;
+	display: block;
+	width: 26px;
+	margin: auto;
+	position: absolute;
+	right: 0;
+	left: 0;
+	animation: top_icon 1.6s linear infinite;
+}
+@keyframes top_icon {
+	10%,
+	90% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0;
+		transform: translateY(-15px);
+	}
+	51% {
+		opacity: 0;
+		transform: translateY(15px);
+	}
+}
+
+/* -- layout image -- */
+.photo {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+	margin-top: -2px;
+}
+.photo span {
+	display: block;
+	width: calc(50% - 3px);
+	margin-top: 6px;
+}
+.photo-r,
+.photo-l,
+.photo-c {
+	margin: 0 0 15px;
+}
+[class^="photo"] img {
+	box-sizing: border-box;
+	width: 100%;
+}
+[class^="photo-"] img {
+	border: solid 5px #fff;
+	box-shadow: 0 0 3px #333;
+}
+.photo img {
+	border: solid 3px #fff;
+	box-shadow: 0 0 2px #333;
+}
+
+/* -- position layout -- */
+.center {
+	text-align: center;
+}
+.right {
+	text-align: right;
+}
+
+/* -- attention -- */
+body::after {
+	content: "";
+	background: #31cde0 url(/img/attention.webp) no-repeat center center;
+	display: block;
+	width: 100%;
+	height: 0;
+	margin: auto;
+	opacity: 0;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1999;
+	transition: all 1s linear;
+}
+.js-mob_landscape::after {
+	height: 100%!important;
+	opacity: 1!important;
+}
+
+/* -- info contents -- */
+#Home #secInfo ul:not([class]),
+#Home #secInfo ol:not([class]) {
+	margin: 1em 0;
+	padding-left: 30px;
+}
+#Home #secInfo ul:not([class]),
+#free ul:not([class]) {
+	list-style: disc;
+}
+#Home #secInfo ol:not([class]),
+#free ol:not([class]) {
+	list-style: decimal;
+}
+#Home #secInfo em,
+#free em {
+	font-style: italic;
+}
+
+
+
+/* -- Footer
+-------------------------------------------------------------------------------- */
+footer {
+	color: #fff;
+	background-color: #333;
+	letter-spacing: 0.05rem;
+	overflow: hidden;
+	box-sizing: border-box;
+	width: 100%;
+	padding: 12px 10px;
+}
+footer small {
+	font-size: 1rem;
+}
+footer ul {
+	display: table;
+	margin-bottom: 10px;
+}
+footer ul li {
+	font-size: 1.2rem;
+	display: table-cell;
+	padding-right: 5px;
+}
+footer ul li a {
+	color: #fff;
+}
+footer ul li a.fa {
+	font-size: 0;
+	width: 17px;
+}
+footer ul li a.fa::before {
+	font-size: 1.4rem;
+}
+footer ul:nth-child(2) li:not(:first-child)::before {
+	content: "/";
+	padding-right: 5px;
+}
+
+
+
+/* -- Media query
+-------------------------------------------------------------------------------- */
+@media screen and (max-width: 340px) {
+	header nav .nav-sns li {
+		margin: 0 5px;
+	}
+	header nav .nav-sns {
+		padding: 20px 0 0;
+	}
+}
+@media screen and (min-width: 361px) {
+	.sp-360 {
+		display: none;
+	}
+}
+@media screen and (min-width: 411px) {
+	.sp-410 {
+		display: none;
+	}
+}

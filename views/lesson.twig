@@ -1,0 +1,17 @@
+{% extends 'layout.twig' %}
+{% set title = 'Lesson' %}
+{% set page = 'lesson' %}
+
+{% block content %}
+	<div id="kv">
+		<h1 class="vis-title" lang="en"><i>Lesson</i>レッスン日程・ご予約</h1>
+		<figure class="vis-img"><img src="/img/vis_provisional.webp" alt="TSUKIパン教室"></figure>
+		<p class="vis-caption">カレンダーより空き状況をみて予約が出来ます<br>
+		日程は毎月1日の9時に更新します</p>
+	</div>
+	<section>
+		<h2>About us</h2>
+		<hr>
+		<p>{{ message }}</p>
+	</section>
+{% endblock %}

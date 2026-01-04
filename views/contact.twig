@@ -1,7 +1,15 @@
 {% extends 'layout.twig' %}
+{% set title = 'Contact Us' %}
+{% set page = 'contact' %}
 
 {% block content %}
-	<h1>About us</h1>
+	<div id="kv">
+		<h1 class="vis-title" lang="en"><i>Contact</i>お問い合わせ</h1>
+		<figure class="vis-img"><img src="https://media.tsukipan.site/2020/04/IMG_E3377-720x720.jpg" fetchpriority="high"></figure>
+		<p class="vis-caption">「お問い合わせ」や「質問」などは、こちらのフォームよりお願いいたします。</p>
+	</div>
 	<hr>
-	<p>{{ message }}</p>
+	<section>
+		<p>{{ message }}</p>
+	</section>
 {% endblock %}

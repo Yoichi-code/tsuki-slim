@@ -1,0 +1,835 @@
+@charset "utf-8";
+
+
+/* -- Lower common
+-------------------------------------------------------------------------------- */
+.vis-caption {
+	font: 500 1.3rem/1.75 "Gyate" ,sans-serif;
+	color: #fff;
+	background-color: rgba(166, 139, 98, 0.5);
+	display: block;
+	box-sizing: border-box;
+	width: 100%;
+	padding: 25px;
+	text-shadow: 0 0 5px #000;
+	position: absolute;
+	right: -25px;
+	bottom: 25px;
+}
+main > section,
+.section-block {
+	font-size: 1.4rem;
+	line-height: 1.75;
+	background-color: #fff!important;
+	margin: 50px 20px;
+	padding: 30px 13px;
+	border: dashed 2px #31cde0;
+	box-shadow: 0 0 0 10px #fff, 5px 5px 20px #000;
+}
+
+/* -- parts -- */
+main > section p,
+main > section h4,
+main > section table,
+main > section ul:not([class]),
+main > section ol:not([class]),
+main > section figure.photo {
+	margin-top: 1.75em;
+}
+main > section > *:last-child {
+	margin-bottom: 0!important;
+}
+main > section table {
+	width: 100%;
+}
+main > section table th,
+main > section table td {
+	padding: 5px 10px;
+	border: solid 1px #31cde0;
+}
+main > section table th[scope="col"] {
+	color: #fff;
+	background-color: #31cde0;
+}
+main > section table th[scope="col"]:not(:last-child) {
+	border-right: solid 1px #fff;;
+}
+main > section table th[scope="row"] {
+	color: #217683;
+	background-color: #e0f8fa;
+	white-space: nowrap;
+}
+main > section ul:not([class]) li,
+main > section ol:not([class]) li {
+	margin-left: 20px;
+}
+main > section ul:not([class]) {
+	list-style: disc;
+}
+main > section ol:not([class]) {
+	list-style: decimal;
+}
+
+/* -- section -- */
+.border-wrap {
+	overflow: hidden;
+	margin-top: 25px;
+	padding-top: 25px;
+	border-top: dashed 2px #31cde0;
+}
+.col p:first-child,
+.border-wrap p:first-child {
+	margin-top: 0;
+}
+.col p:first-of-type:first-letter,
+.border-wrap p:first-of-type:first-letter {
+	font-size: 4.8rem;
+	font-weight: 600;
+	line-height: 1;
+	color: #31cde0;
+	display: block;
+	float: left;
+	margin-right: 0.15em;
+}
+.col figure {
+	margin-top: 15px;
+}
+.link-nv li {
+	box-shadow: 0 0 3px #666;
+}
+.link-nv li + li {
+	margin-top: 10px;
+}
+.link-nv li a {
+	display: block;
+	overflow: hidden;
+	height: 50px;
+	position: relative;
+}
+.link-nv li a.active {
+	background-color: #000;
+}
+nav .link-nv li a {
+	height: 75px;
+}
+.link-nv li a span {
+	font: 500 1.2rem/1 "Gyate" ,sans-serif;
+	color: #fff;
+	background-color: rgba(49, 205, 224, 0.8);
+	display: flex;
+	align-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	box-sizing: border-box;
+	width: 75%;
+	height: 100%;
+	padding: 0 10px;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+.link-nv li a span::before {
+	content: "\f054";
+	font-family: FontAwesome;
+	color: #fff;
+	display: block;
+	margin-top: -0.5em;
+	position: absolute;
+	top: 50%;
+	right: 10px;
+}
+.link-nv li a span i {
+	font-size: 1.8rem;
+	display: block;
+	width: 100%;
+	padding-bottom: 5px;
+}
+.link-nv li a img {
+	width: 25%;
+	margin: auto;
+	position: absolute;
+	top: -100%;
+	bottom: -100%;
+	left: 0;
+}
+.link-nv li a.active img {
+	opacity: 0.7;
+}
+.page-nv {
+	background: #fff url(/img/bg_page-nv.webp) repeat;
+	overflow: hidden;
+	padding-top: 50px;
+}
+.page-nv h2 {
+	margin: 0 10px -30px;
+}
+
+/* -- news section -- */
+#pagination {
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	margin-top: 30px;
+}
+#pagination a,
+#pagination span {
+	font-size: 1.4rem;
+	line-height: 25px;
+	display: block;
+	width: 25px;
+	height: 25px;
+	margin: 0 1px;
+	border: solid 2px #31cde0;
+	border-radius: 4px;
+}
+#pagination a {
+	font-weight: 600;
+	color: #31cde0;
+	background-color: #fff;
+}
+#pagination span {
+	color: #fff;
+	background-color: #ccc;
+}
+
+
+
+/* -- Profile
+-------------------------------------------------------------------------------- */
+#profile #career {
+	color: #fff;
+	background-color: #31cde0;
+	margin-top: 30px;
+	padding: 25px;
+}
+#profile #career h4 {
+	font-size: 1.6;
+	overflow: hidden;
+	margin-top: 0;
+	border-bottom: solid 1px #fff;
+}
+#profile #career figure {
+	margin-bottom: 25px;
+}
+#profile #career + table {
+	margin-top: 30px;
+}
+
+
+
+/* -- Course
+-------------------------------------------------------------------------------- */
+#course .anc li a span::before {
+	content: "\f078";
+}
+#course #advance + .anc li a span::before {
+	content: "\f077";
+}
+#course .anc li a.active span::before {
+	content: "\f2d0"!important;
+}
+#course .link-nv ~ section {
+	opacity: 0;
+	position: absolute;
+	z-index: 0;
+	transform: scale(0);
+	transform-origin: center top;
+	transition: all 1s ease;
+}
+.special-wrap {
+	margin-top: 50px;
+}
+#course section.active {
+	opacity: 1;
+	position: relative;
+	z-index: 1;
+	transform: scale(1);
+}
+#course .col figure:last-child {
+	margin-bottom: 0;
+}
+.lead-wrap:last-child {
+	margin-top: 50px;
+}
+.course-wrap {
+	margin-bottom: 25px;
+	padding-bottom: 25px;
+	border-bottom: double 6px #31cde0;
+}
+#course .course-wrap div p {
+	color: #fff;
+	background-color: #31cde0;
+	box-sizing: border-box;
+	margin-top: 0;
+	padding: 0 20px 20px;
+}
+#course section[role="tabpanel"] .col ol {
+	margin: 0;
+	padding: 15px;
+	border: solid 2px #a68b62;
+}
+#course .course-wrap div figure {
+	margin-top: 1.75em;
+	border: solid 20px #31cde0;
+}
+.course-wrap div figure a {
+	display: block;
+	position: relative;
+}
+.course-wrap div figure a::before {
+	font-size: 2rem;
+	color: #fff;
+	position: absolute;
+	right: 10px;
+	bottom: 6px;
+	z-index: 2;
+}
+.course-wrap div figure a::after {
+	content: "Tap to open slideshow";
+	font-size: 1.2rem;
+	color: #fff;
+	background-color: rgba(49, 205, 224, 0.7);
+	display: block;
+	box-sizing: border-box;
+	width: 100%;
+	padding: 10px;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
+.course-wrap[class*="bg-ill"] {
+	background-repeat: no-repeat;
+	background-position: right 0 top 50px;
+	background-size: 145px auto;
+}
+.bg-ill1 {
+	background-image: url(/img/bg_illust1.webp);
+}
+.bg-ill2 {
+	background-image: url(/img/bg_illust2.webp);
+}
+.bg-ill3 {
+	background-image: url(/img/bg_illust3.webp);
+}
+.bg-ill4 {
+	background-image: url(/img/bg_illust4.webp);
+}
+.bg-ill5 {
+	background-image: url(/img/bg_illust5.webp);
+}
+.bg-ill6 {
+	background-image: url(/img/bg_illust6.webp);
+}
+.bg-ill7 {
+	background-image: url(/img/bg_illust7.webp);
+}
+.bg-ill8 {
+	background-image: url(/img/bg_illust8.webp);
+}
+.bg-ill9 {
+	background-image: url(/img/bg_illust9.webp);
+}
+.bg-ill10 {
+	background-image: url(/img/bg_illust10.webp);
+}
+.bg-ill11 {
+	background-image: url(/img/bg_illust11.webp);
+}
+.bg-ill12 {
+	background-image: url(/img/bg_illust12.webp);
+}
+.fancybox-caption {
+	font-family: "Gyate" ,sans-serif;
+}
+
+
+
+/* -- Information・Lesson  - common block
+-------------------------------------------------------------------------------- */
+#free div + div {
+	margin-top: 35px;
+	border-top: double 3px #31cde0;
+}
+
+
+
+/* -- Information
+-------------------------------------------------------------------------------- */
+#flow .col {
+	padding-bottom: 50px;
+	border-bottom: double 6px #31cde0;
+}
+#flow .col,
+#flow .course-wrap div:not(:last-child) {
+	margin-bottom: 50px;
+	padding-bottom: 35px;
+	border-bottom: double 6px #31cde0;
+}
+#flow .course-wrap div figure {
+	margin-top: 25px;
+}
+#access iframe {
+	width: 100%;
+	height: 300px;
+	margin-top: 30px;
+}
+#price {
+	background: #fff url(/img/info/price_bg.webp) no-repeat center bottom 10px / 96% auto;
+	padding-bottom: 120px;
+}
+
+#price .price-list,
+#price .price-list tbody,
+#price .price-list tr,
+#price .price-list th,
+#price .price-list td {
+	display: block;
+}
+#price .price-list tr:not(:first-child) th {
+	border-top: none;
+}
+#price .price-list th {
+	border-bottom: none;
+}
+#price table {
+	background-color: rgba(255, 255, 255, 0.7);
+}
+#price table td p {
+	margin-top: 0;
+}
+#price table span {
+	font-size: 1.2rem;
+}
+#review dl {
+	margin-top: 25px;
+}
+#review dt {
+	font-size: 1.8rem;
+	font-weight: 600;
+	color: #fff;
+	background-color: #31cde0;
+	display: inline-block;
+	padding: 10px 25px;
+	position: relative;
+}
+#review dd {
+	background-color: rgba(255, 255, 255, 0.7);
+	margin: -25px 0 25px 50px;
+	padding: 25px;
+	border: solid 1px #31cde0;
+}
+#review dl::after {
+	content: "";
+	background: url(/img/info/review_bg.webp) no-repeat center 0 / 100% auto;
+	display: block;
+	width: 100%;
+	height: 0;
+	padding-top: 201%;
+	opacity: 0.5;
+}
+#faq dt,
+#faq dd {
+	padding-left: 50px;
+	position: relative;
+}
+#faq dt {
+	font-weight: 600;
+	color: #31cde0;
+
+	counter-increment: f;
+}
+#faq dd + dt {
+	margin-top: 25px;
+	padding-top: 25px;
+	border-top: solid 1px #31cde0;
+}
+#faq dd {
+	margin-top: 25px;
+
+	counter-increment: a;
+}
+#faq dt::before,
+#faq dd::before {
+	font: 500 2.6rem/1 "Fredericka the Great", cursive;
+	color: #31cde0;
+	position: absolute;
+	left: 0;
+}
+#faq dt::before {
+	content: "Q"counter(f);
+	letter-spacing: 0.1em;
+}
+#faq dd::before {
+	content: "A"counter(a);
+	letter-spacing: 0.18em;
+	padding-left: 0.1em;
+}
+
+
+
+/* -- Lesson
+-------------------------------------------------------------------------------- */
+#lesson .calendar-wrap .calendar,
+#lesson .calendar div[class^="table-"] {
+	font-family: "Gyate" ,sans-serif;
+	text-align: center;
+	margin-top: 30px;
+	opacity: 1;
+	position: static;
+	transform: inherit;
+	transition: inherit;
+}
+#lesson .calendar h4 {
+	margin-bottom: -20px;
+}
+#lesson .calendar th,
+#lesson .calendar td {
+	padding: 0;
+}
+
+
+
+/* -- Contact / Booking-form / error404
+-------------------------------------------------------------------------------- */
+#form form {
+	display: block;
+	margin-top: 25px;
+}
+#form form table,
+#form form tbody,
+#form form tr,
+#form form th,
+#form form td {
+	display: block;
+}
+#form form table {
+	overflow: hidden;
+	margin: 0 auto 30px;
+}
+#form form th {
+	line-height: 28px;
+	color: #fff;
+	background-color: #31cde0;
+	box-sizing: border-box;
+	width: 170px;
+	padding: 10px 20px;
+}
+#form form td:not([colspan]) {
+	margin: -25px 0 25px 25px;
+	padding: 50px 15px 25px 15px;
+	border: solid 1px #31cde0;
+}
+#form form td[colspan="2"] {
+	border-top: none;
+	border-right: none;
+	border-left: none;
+}
+#form form tr:last-child td {
+	margin-bottom: 0;
+}
+#form form input[type="text"],
+#form form input[type="email"],
+#form form textarea {
+	font-size: 1.6rem;
+	line-height: 1.5;
+	box-sizing: border-box;
+	width: 100%;
+	padding: 10px;
+	border: solid 1px #ccc;
+	box-shadow: 0 0 5px #aaa;
+}
+#form form textarea {
+	height: calc(6em + 22px);
+}
+#booking_client-fieldset,
+#booking-message-fieldset {
+	margin-top: 15px;
+}
+.input-number {
+	display: inline-block;
+	width: 50px;
+	margin-right: 15px;
+}
+.input-number label + br {
+	display: none;
+}
+#form legend {
+	box-sizing: border-box;
+	width: 100%;
+}
+#action-button {
+	text-align: center;
+	margin-top: 0;
+	padding-top: 30px;
+}
+#form button,
+a.button-type {
+	font-size: 1.6rem;
+	font-weight: 600;
+	color: #31cde0;
+	background-color: rgba(49, 205, 224, 0.1);
+	text-align: center;
+	display: block;
+	width: 100%;
+	padding: 10px 0;
+	border: solid 2px #31cde0;
+	border-radius: 10px;
+	position: relative;
+}
+#form button + button {
+	margin-top: 15px;
+}
+#form button::after,
+a.button-type::after {
+	font-size: 1.8rem;
+	font-family: FontAwesome;
+	font-weight: 500;
+	line-height: 1;
+	display: block;
+	position: absolute;
+	top: 16px;
+	right: 15px;
+}
+#form button[name="submitConfirm"]::after,
+#form button[name="reserve_action"]::after,
+.videolesson-form a.button-type::after {
+	content: "\f022";
+}
+#form button[name="submitBack"]::after {
+	content: "\f122";
+}
+#contact #form button[name^="mwform_"]::after {
+	content: "\f003";
+}
+#form .error,
+#form .error-message {
+	color: #f00;
+}
+.mw_wp_form_complete p:not(:last-of-type),
+.booking-thanks p:not(:last-of-type),
+#booking-error p:not(:last-of-type),
+.er404 p:not(:last-of-type) {
+	font-size: 1.8rem;
+}
+.mw_wp_form_complete p:last-of-type,
+.booking-thanks p:last-of-type,
+#booking-error p:last-of-type,
+.er404 p:last-of-type {
+	margin-top: 50px;
+}
+.mw_wp_form_complete p img,
+.booking-thanks p img,
+#booking-error p img,
+.er404 p img {
+	display: block;
+	width: 200px;
+	margin: auto;
+}
+.mw_wp_form_input .preview,
+.mw_wp_form_preview .input {
+	display: none;
+}
+.booking-input_note {
+	padding: 15px 15px 15px 40px;
+	list-style-type: square;
+	border: solid 1px #31cde0;
+}
+.booking-check_note,
+#form .preview,
+#form .input {
+	font-weight: 600;
+	margin: 0 0 35px;
+}
+#form.check .booking-input_note,
+#form.input .booking-check_note {
+	display: none;
+}
+#booking-error .error-message.error-box {
+	display: none;
+}
+.caution {
+	font-weight: 600;
+	color: #ff4c4c;
+	margin-bottom: 20px;
+}
+
+
+
+/* -- To students
+-------------------------------------------------------------------------------- */
+#students #form form {
+	text-align: center;
+	display: block;
+}
+#students #form .lead {
+	font-size: 1.6rem;
+	background: url(/img/logo_portrait.webp) no-repeat center 0 / 200px auto;
+	padding-top: 170px;
+}
+#students #form form input[type="text"] {
+	margin: 30px auto;
+}
+#students .warning {
+	font-weight: 600;
+	color: #f00;
+	text-align: center;
+	margin: -20px 0 30px;
+}
+#movie {
+	background: url(/img/info/price_bg.webp) no-repeat right 10px bottom 10px / 75% auto;
+	padding-bottom: 100px;
+}
+#movie div {
+	background-color: rgba(255, 255, 255, 0.7);
+	margin-top: 35px;
+	box-shadow: 0 0 5px 5px rgba(255, 255, 255, 0.7);
+}
+#movie div h3.title-sub2 {
+	margin-top: 0;
+}
+#movie .thum a {
+	display: block;
+	overflow: hidden;
+	position: relative;
+}
+#movie .thum a img {
+	opacity: 0.5;
+	position: relative;
+}
+#movie .thum a::after {
+	content: "\f144";
+	font: 500 80px/1 "FontAwesome";
+	text-align: center;
+	display: block;
+	width: 100%;
+	height: 80px;
+	margin: auto;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+}
+#movie .link {
+	font-size: 1.8rem;
+	font-weight: 600;
+	margin-top: 0;
+}
+.recipe .recipe-header > figure {
+	position: relative;
+}
+.recipe .recipe-header > figure img {
+	border-radius: 2.5%;
+}
+.recipe .recipe-header > figure::after {
+	content: "";
+	background: url(/img/logo_landscape.webp) no-repeat 0 0 / cover;
+	display: block;
+	width: 180px;
+	height: 50px;
+	position: absolute;
+	right: -20px;
+	bottom: -20px;
+}
+.recipe-table {
+	table-layout: fixed;
+}
+.recipe-table th,
+.recipe-table td {
+	font-size: 1.2rem;
+	border: solid 1px #31cde0;
+}
+.recipe-table th {
+	font-weight: 600;
+	background-color: #b5ebf1;
+}
+.recipe-table td {
+	background-color: #fff;
+	text-align: right;
+}
+.recipe-table thead th {
+	text-align: center;
+}
+.recipe-table tr > *:first-child {
+	width: 100px;
+}
+
+
+
+/* -- Privacy policy
+-------------------------------------------------------------------------------- */
+#privacy ol ol {
+	margin: 1em 0;
+	list-style: cjk-ideographic;
+}
+#privacy ol ol ol {
+	list-style: lower-roman;
+}
+#privacy dl {
+	margin: 1.75em 0 0;
+}
+#privacy dd {
+	margin: -1.75em 0 0 6em;
+	padding-left: 2em;
+	position: relative;
+}
+#privacy dd::before {
+	content: "：";
+	text-align: center;
+	display: block;
+	width: 1em;
+	position: absolute;
+	left: 0;
+}
+
+
+
+/* -- Private movie
+-------------------------------------------------------------------------------- */
+.post-password-form p + p {
+	font-size: 0;
+}
+.post-password-form input[type="password"] {
+	font-size: 1.6rem;
+	line-height: 1.5;
+	box-sizing: border-box;
+	width: 100%;
+	margin: 30px 0;
+	padding: 10px;
+	border: solid 1px #ccc;
+	box-shadow: 0 0 5px #aaa;
+}
+.post-password-form input[type="submit"] {
+	font-size: 1.6rem;
+	font-weight: 600;
+	color: #31cde0;
+	background-color: rgba(49, 205, 224, 0.1);
+	text-align: center;
+	display: block;
+	width: 100%;
+	padding: 10px 0;
+	border: solid 2px #31cde0;
+	border-radius: 10px;
+	position: relative;
+}
+
+
+
+/* -- Rice flour bread
+-------------------------------------------------------------------------------- */
+.rice_movie_schedule h4 em {
+	font-size: 1.4rem;
+	font-weight: 600;
+	color: #fff;
+	background-color: #31cde0;
+	display: inline-block;
+	padding: 2px 8px;
+	position: relative;
+	top: -4px;
+}
+#rice .price-list td b {
+	font-size: 1.2rem;
+	color: #594a2a;
+	display: block;
+}
+.videolesson-form {
+	margin-top: 50px;
+}

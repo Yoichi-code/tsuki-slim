@@ -1,0 +1,1110 @@
+@charset "utf-8";
+
+
+/* -- Lower common
+-------------------------------------------------------------------------------- */
+#kv::before {
+	content: "";
+	background-color: rgba(255, 255, 255, 0.75);
+	display: block;
+	width: 100px;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 1;
+}
+.vis-caption {
+	font: 500 1.3rem/1.75 "Gyate" ,sans-serif;
+	color: #fff;
+	background-color: rgba(166, 139, 98, 0.5);
+	display: block;
+	width: 320px;
+	padding: 50px;
+	text-shadow: 0 0 5px #000;
+	position: absolute;
+	top: 50px;
+	right: 150px;
+}
+main > section,
+.section-block {
+	font-size: 1.6rem;
+	line-height: 1.75;
+	background-color: #fff!important;
+	overflow: hidden;
+	margin: 100px;
+	padding: 50px;
+	border: dashed 2px #31cde0;
+	box-shadow: 0 0 0 10px #fff, 5px 5px 20px #000;
+}
+
+/* -- parts -- */
+main > section p,
+main > section h4,
+main > section table,
+main > section ul:not([class]),
+main > section ol:not([class]),
+main > section figure.photo {
+	margin-top: 1.75em;
+}
+main > section > *:last-child {
+	margin-bottom: 0!important;
+}
+main > section table {
+	width: 100%;
+}
+main > section table th,
+main > section table td {
+	padding: 10px 15px;
+	border: solid 1px #31cde0;
+}
+main > section table th[scope="col"] {
+	color: #fff;
+	background-color: #31cde0;
+}
+main > section table th[scope="col"]:not(:last-child) {
+	border-right: solid 1px #fff;;
+}
+main > section table th[scope="row"] {
+	color: #217683;
+	background-color: #e0f8fa;
+	white-space: nowrap;
+}
+main > section ul:not([class]),
+main > section ol:not([class]) {
+	margin: 1.75em 0 0 1.5em;
+}
+main > section ul:not([class]) {
+	list-style: disc;
+}
+main > section ol:not([class]) {
+	list-style: decimal;
+}
+
+/* -- section -- */
+.border-wrap {
+	overflow: hidden;
+	margin-top: 50px;
+	padding-top: 50px;
+	border-top: dashed 2px #31cde0;
+}
+.col p:first-of-type,
+.border-wrap p:first-of-type {
+	margin-top: 0;
+}
+.col p:first-of-type:first-letter,
+.border-wrap p:first-of-type:first-letter {
+	font-size: 6.4rem;
+	font-weight: 600;
+	line-height: 1;
+	color: #31cde0;
+	display: block;
+	float: left;
+	margin-right: 0.15em;
+}
+.col {
+	line-height: 2;
+	columns: auto 4;
+	column-gap: 50px;
+}
+.col figure {
+	display: inline-block;
+	margin-top: 15px;
+}
+.col figure img {
+	margin: 5px 0;
+}
+.link-nv {
+	display: flex;
+	justify-content: space-between;
+}
+.link-nv li {
+	width: calc(33% - 20px);
+}
+nav .link-nv li {
+	width: calc(25% - 10px);
+	box-shadow: 0 0 8px #333;
+}
+.link-nv li a {
+	display: block;
+	overflow: hidden;
+	height: 200px;
+	position: relative;
+}
+.link-nv li a.active {
+	background-color: #000;
+	cursor: default;
+}
+.link-nv li a span {
+	font: 500 1.2rem/1 "Gyate" ,sans-serif;
+	color: #fff;
+	background-color: rgba(49, 205, 224, 0.8);
+	text-align: center;
+	display: block;
+	box-sizing: border-box;
+	width: 100%;
+	padding: 10px 0;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
+.link-nv li a span::before {
+	content: "\f054";
+	font-family: FontAwesome;
+	color: #fff;
+	display: block;
+	margin-top: -0.5em;
+	position: absolute;
+	top: 50%;
+	right: 10px;
+	transition: all 0.5s ease;
+}
+.link-nv li a span i {
+	font-size: 2.4rem;
+	display: block;
+	padding-bottom: 5px;
+}
+.link-nv li a img {
+	width: 100%;
+	margin: auto;
+	position: absolute;
+	top: -100%;
+	bottom: -100%;
+	transition: all 0.5s ease;
+}
+.link-nv li a:hover img,
+.link-nv li a.active img {
+	opacity: 0.7;
+}
+.link-nv li a:not(.active):hover img {
+	transform: scale(1.2);
+}
+.page-nv {
+	background: #fff url(/img/bg_page-nv.webp) repeat;
+	overflow: hidden;
+	padding-top: 100px;
+}
+.page-nv h2 {
+	margin: 0 90px -30px;
+}
+.page-nv .link-nv li a:hover span::before {
+	right: 0;
+}
+
+/* -- news section -- */
+#pagination {
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	margin-top: 40px;
+}
+#pagination a,
+#pagination span {
+	font-size: 1.8rem;
+	line-height: 40px;
+	display: block;
+	width: 40px;
+	height: 40px;
+	margin: 0 2px;
+	border: solid 2px #31cde0;
+	border-radius: 4px;
+}
+#pagination a {
+	font-weight: 600;
+	color: #31cde0;
+	background-color: #fff;
+}
+#pagination span {
+	color: #fff;
+	background-color: #ccc;
+}
+#pagination a:hover {
+	color: #fff;
+	background-color: #31cde0;
+	box-shadow: 0 0 2px #003876, 0 0 5px #003876;
+}
+
+
+
+/* -- Profile
+-------------------------------------------------------------------------------- */
+#profile #career {
+	color: #fff;
+	background-color: #31cde0;
+	float: left;
+	width: calc(50% - 10px);
+	margin-top: 80px;
+	padding: 50px;
+}
+#profile #career h4 {
+	font-size: 1.8rem;
+	overflow: hidden;
+	margin-top: 0;
+	border-bottom: solid 1px #fff;
+}
+#profile #career figure {
+	float: left;
+	width: 50%;
+	max-width: 300px;
+	margin: -100px 25px 0 -25px;
+}
+#profile #career + table {
+	float: right;
+	width: calc(50% - 10px);
+	margin-top: 80px;
+}
+
+
+
+/* -- Course
+-------------------------------------------------------------------------------- */
+#course .anc li a span::before {
+	content: "\f078";
+}
+#course #advance + .anc li a span::before {
+	content: "\f077";
+}
+#course .anc li a.active span::before {
+	content: "\f2d0"!important;
+}
+#course .anc li a:not(.active):hover span::before {
+	margin-top: 5px;
+}
+#course #advance + .anc li a:not(.active):hover span::before {
+	margin-top: -20px;
+}
+#course .link-nv ~ section {
+	opacity: 0;
+	position: absolute;
+	z-index: 0;
+	transform: scale(0);
+	transform-origin: center top;
+	transition: all 1s ease;
+}
+.special-wrap {
+	margin-top: 100px;
+}
+#course section.active {
+	opacity: 1;
+	position: relative;
+	z-index: 1;
+	transform: scale(1);
+}
+#course section[role="tabpanel"] .col ol {
+	margin: 0;
+	padding: 15px 20px 15px 40px;
+	border: double 2px #a68b62;
+}
+.course-wrap {
+	display: flex;
+	align-items: center;
+	flex-flow: row wrap;
+	justify-content: space-between;
+	padding-bottom: 50px;
+	border-bottom: double 6px #31cde0;
+}
+#foundation .course-wrap {
+	align-items: flex-start;
+}
+.course-wrap > h3,
+#foundation .course-wrap > p {
+	width: 100%;
+}
+.course-wrap > p {
+	font-size: 1.8rem;
+	font-weight: 600;
+	line-height: 2;
+	color: #555;
+	text-shadow: 0 0 2px #fff, 0 0 4px #fff, 0 0 6px #31cde0;
+}
+.course-wrap div,
+.course-wrap > p {
+	width: calc(50% - 25px);
+	position: relative;
+}
+.course-wrap div figure {
+	width: 75%;
+	max-width: 500px;
+	margin: 30px 0 50px;
+}
+.course-wrap div figure a {
+	display: block;
+	position: relative;
+}
+.course-wrap div figure a::before {
+	font-size: 2rem;
+	color: #31cde0;
+	position: absolute;
+	top: 2px;
+	right: -30px;
+}
+.course-wrap div figure a::after {
+	content: "Click to open slideshow";
+	color: #fff;
+	background-color: rgba(49, 205, 224, 0.8);
+	display: block;
+	box-sizing: border-box;
+	width: 100%;
+	padding: 10px;
+	opacity: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+	transition: all 0.5s ease;
+}
+.course-wrap div figure img {
+	width: 100%;
+	transition: all 0.5s ease;
+}
+.course-wrap div figure a:hover::after {
+	opacity: 1;
+}
+.course-wrap div figure a:hover img {
+	opacity: 0.7;
+}
+.course-wrap figure + p {
+	color: #fff;
+	background-color: rgba(49, 205, 224, 0.8);
+	box-sizing: border-box;
+	width: 75%;
+	max-width: 500px;
+	padding: 25px;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+}
+.course-wrap[class*="bg-ill"] {
+	background-repeat: no-repeat;
+	background-position: left 0 bottom 50px;
+}
+.bg-ill1 {
+	background-image: url(/img/bg_illust1.webp);
+}
+.bg-ill2 {
+	background-image: url(/img/bg_illust2.webp);
+}
+.bg-ill3 {
+	background-image: url(/img/bg_illust3.webp);
+}
+.bg-ill4 {
+	background-image: url(/img/bg_illust4.webp);
+}
+.bg-ill5 {
+	background-image: url(/img/bg_illust5.webp);
+}
+.bg-ill6 {
+	background-image: url(/img/bg_illust6.webp);
+}
+.bg-ill7 {
+	background-image: url(/img/bg_illust7.webp);
+}
+.bg-ill8 {
+	background-image: url(/img/bg_illust8.webp);
+}
+.bg-ill9 {
+	background-image: url(/img/bg_illust9.webp);
+}
+.bg-ill10 {
+	background-image: url(/img/bg_illust10.webp);
+}
+.bg-ill11 {
+	background-image: url(/img/bg_illust11.webp);
+}
+.bg-ill12 {
+	background-image: url(/img/bg_illust12.webp);
+}
+.fancybox-caption {
+	font-family: "Gyate" ,sans-serif;
+}
+
+
+
+/* -- Information・Lesson  - common block
+-------------------------------------------------------------------------------- */
+#free {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+}
+#free h3 {
+	margin-top: 10px;
+}
+#free h2 {
+	width: 100%;
+}
+#free div:only-of-type {
+	width: 100%;
+}
+#free div:only-of-type figure {
+	width: 30%;
+}
+#free div:not(:only-of-type) {
+	box-sizing: content-box;
+	width: calc(50% - 50px);
+}
+#free div:nth-of-type(even) {
+	padding-left: 50px;
+	border-left: solid 1px #31cde0;
+}
+#free div:nth-of-type(n+3) {
+	margin-top: 50px;
+}
+
+
+
+/* -- Information
+-------------------------------------------------------------------------------- */
+#access iframe {
+	width: 100%;
+	height: 600px;
+	margin-top: 30px;
+}
+#price {
+	background: url(/img/info/price_bg.webp) no-repeat right 50px bottom 50px;
+}
+#price table {
+	background-color: rgba(255, 255, 255, 0.7);
+	max-width: 800px;
+}
+#price table th {
+	width: 280px;
+}
+#price table span {
+	font-size: 1.4rem;
+}
+#review dl {
+	margin-top: 50px;
+	padding-right: 50%;
+	position: relative;
+}
+#review dl::before {
+	content: "";
+	background: url(/img/info/review_bg.webp) no-repeat right 0 / auto 100%;
+	display: block;
+	width: 100%;
+	height: 100%;
+	opacity: 0.5;
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: -1;
+}
+#review dt {
+	font-size: 2.4rem;
+	font-weight: 600;
+	color: #fff;
+	background-color: #31cde0;
+	display: inline-block;
+	padding: 10px 25px;
+	position: relative;
+}
+#review dd {
+	background-color: rgba(255, 255, 255, 0.7);
+	margin: -25px 0 50px 50px;
+	padding: 25px;
+	border: solid 1px #31cde0;
+}
+#faq dt,
+#faq dd {
+	padding-left: 75px;
+	position: relative;
+}
+#faq dt {
+	font-size: 1.8rem;
+	font-weight: 600;
+	color: #31cde0;
+
+	counter-increment: f;
+}
+#faq dd + dt {
+	margin-top: 50px;
+	padding-top: 50px;
+	border-top: solid 1px #31cde0;
+}
+#faq dd {
+	margin-top: 30px;
+
+	counter-increment: a;
+}
+#faq dt::before,
+#faq dd::before {
+	font: 500 4rem/1 "Fredericka the Great", cursive;
+	color: #31cde0;
+	position: absolute;
+	left: 0;
+}
+#faq dt::before {
+	content: "Q"counter(f);
+	letter-spacing: 0.1em;
+}
+#faq dd::before {
+	content: "A"counter(a);
+	letter-spacing: 0.18em;
+	padding-left: 0.1em;
+}
+#info .calendar-wrap {
+	margin-top: 0;
+}
+
+
+
+/* -- Lesson
+-------------------------------------------------------------------------------- */
+#lesson .calendar-wrap .calendar {
+	font-family: "Gyate" ,sans-serif;
+	text-align: center;
+	margin-top: 30px;
+	opacity: 1;
+	position: static;
+	transform: inherit;
+	transition: inherit;
+}
+#lesson .calendar th,
+#lesson .calendar td {
+	padding: 0;
+}
+
+
+
+/* -- Contact / Booking-form / error404
+-------------------------------------------------------------------------------- */
+#form form {
+	display: block;
+	width: 100%;
+	max-width: 800px;
+	margin: 50px auto 0;
+}
+#form form table,
+#form form tbody,
+#form form tr,
+#form form th,
+#form form td {
+	display: block;
+}
+#form form table {
+	overflow: hidden;
+	margin: 15px auto 30px;
+}
+#form form th {
+	line-height: 28px;
+	color: #fff;
+	background-color: #31cde0;
+	box-sizing: border-box;
+	width: 200px;
+	padding: 10px 20px;
+}
+#form form td:not([colspan]) {
+	margin: -25px 0 25px 100px;
+	padding: 50px 25px 25px 25px;
+	border: solid 1px #31cde0;
+}
+#form form td[colspan="2"] {
+	border-top: none;
+	border-right: none;
+	border-left: none;
+}
+#form form tr:last-child td {
+	margin-bottom: 0;
+}
+#form form input[type="text"],
+#form form input[type="email"],
+#form form textarea {
+	font-size: 1.6rem;
+	line-height: 1.5;
+	box-sizing: border-box;
+	width: 100%;
+	padding: 10px;
+	border: solid 1px #ccc;
+	box-shadow: 0 0 5px #aaa;
+}
+#form form textarea {
+	height: calc(9em + 22px);
+}
+#booking_client-fieldset,
+#booking-message-fieldset {
+	margin-top: 50px;
+}
+.input-number {
+	display: inline-block;
+	width: 100px;
+	margin-right: 25px;
+}
+.input-number {
+	display: inline-block;
+	width: 100px;
+	margin-right: 25px;
+}
+.input-number label + br {
+	display: none;
+}
+#form legend {
+	box-sizing: border-box;
+	width: 100%;
+}
+#action-button {
+	text-align: center;
+	margin-top: 0;
+	padding-top: 30px;
+}
+#form button,
+a.button-type {
+	font-size: 1.8rem;
+	font-weight: 600;
+	color: #31cde0;
+	background-color: rgba(49, 205, 224, 0.1);
+	text-align: center;
+	letter-spacing: 0.1em;
+	display: inline-block;
+	overflow: hidden;
+	width: 40%;
+	margin: 0 20px;
+	padding: 20px 0;
+	cursor: pointer;
+	border: solid 4px #31cde0;
+	border-radius: 10px;
+	position: relative;
+}
+#form button::after,
+a.button-type::after {
+	font-size: 2.4rem;
+	font-family: FontAwesome;
+	font-weight: 500;
+	line-height: 1;
+	display: block;
+	position: absolute;
+	top: 24px;
+	right: 15px;
+}
+#form button[name="submitConfirm"]::after,
+#form button[name="reserve_action"]::after,
+.videolesson-form a.button-type::after {
+	content: "\f022";
+}
+#form button[name="submitBack"]::after {
+	content: "\f122";
+}
+#contact #form button[name^="mwform_"]::after {
+	content: "\f003";
+}
+#form button::before,
+a.button-type::before {
+	content: "";
+	background-color: #fff;
+	display: block;
+	width: 0;
+	height: 0;
+	margin: auto;
+	border-radius: 50%;
+	position: absolute;
+	top: -100%;
+	right: -100%;
+	bottom: -100%;
+	left: -100%;
+	z-index: -1;
+	transition: all 0.5s ease;
+}
+#form button:hover,
+a.button-type:hover {
+	color: #fff;
+	box-shadow: 0 0 10px #594a2a, 0 0 20px #764b00;
+}
+#form button:hover::before,
+a.button-type:hover::before {
+	background-color: #31cde0;
+	width: 320px;
+	height: 320px;
+}
+a.button-type {
+	box-sizing: border-box;
+	width: 100%;
+	max-width: 800px;
+	margin: 0;
+}
+a.button-type:hover::before {
+	width: calc(100% + 20px);
+	height: 600px;
+}
+#form .error,
+#form .error-message {
+	color: #f00;
+}
+.mw_wp_form_complete p:not(:last-of-type),
+.booking-thanks p:not(:last-of-type),
+#booking-error p:not(:last-of-type),
+.er404 p:not(:last-of-type) {
+	font-size: 2.4rem;
+	text-align: center;
+}
+.mw_wp_form_complete p:last-of-type,
+.booking-thanks p:last-of-type,
+#booking-error p:last-of-type,
+.er404 p:last-of-type {
+	margin-top: 100px;
+}
+.mw_wp_form_input .preview,
+.mw_wp_form_preview .input {
+	display: none;
+}
+.booking-check_note,
+.booking-input_note {
+	box-sizing: border-box;
+	max-width: 800px;
+	margin: 0 auto;
+}
+.booking-input_note {
+	padding: 25px 25px 25px 50px;
+	list-style-type: square;
+	border: solid 1px #31cde0;
+}
+.booking-check_note,
+#form .preview,
+#form .input {
+	font-weight: 600;
+	margin-bottom: 50px;
+}
+#form.check .booking-input_note,
+#form.input .booking-check_note {
+	display: none;
+}
+#booking-error .error-message.error-box {
+	display: none;
+}
+.caution {
+	font-weight: 600;
+	color: #ff4c4c;
+	margin-bottom: 20px;
+}
+
+
+
+/* -- Privacy policy
+-------------------------------------------------------------------------------- */
+#privacy ol ol {
+	margin: 1em 0 1em 1.5em;
+	list-style: cjk-ideographic;
+}
+#privacy ol ol ol {
+	list-style: lower-roman;
+}
+#privacy dl {
+	margin: 1.75em 0 0;
+}
+#privacy dd {
+	margin: -1.75em 0 0 6em;
+	padding-left: 2em;
+	position: relative;
+}
+#privacy dd::before {
+	content: "：";
+	text-align: center;
+	display: block;
+	width: 1em;
+	position: absolute;
+	left: 0;
+}
+
+
+
+/* -- To students
+-------------------------------------------------------------------------------- */
+#students #form form {
+	text-align: center;
+	display: block;
+}
+#students #form .lead {
+	font-size: 2rem;
+	background: url(/img/logo_portrait.webp) no-repeat center 0;
+	padding-top: 265px;
+}
+#students #form form input[type="text"] {
+	max-width: 400px;
+	margin: 30px auto;
+}
+#students .warning {
+	font-weight: 600;
+	color: #f00;
+	text-align: center;
+	margin: -20px 0 30px;
+}
+#movie {
+	background: url(/img/info/price_bg.webp) no-repeat right 50px bottom 25px / 50% auto;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+	padding-bottom: 200px;
+}
+#movie h2,
+#movie h2 + p {
+	display: block;
+	width: 100%;
+}
+#movie div,
+#movie::before,
+#movie::after {
+	display: block;
+	width: calc(25% - 40px);
+}
+#movie div {
+	background-color: rgba(255, 255, 255, 0.7);
+	margin-top: 50px;
+	box-shadow: 0 0 10px 10px rgba(255, 255, 255, 0.7);
+}
+#movie::before,
+#movie::after {
+	content: "";
+	height: 0;
+}
+#movie::before {
+	order: 1;
+}
+#movie div h3.title-sub2 {
+	margin-top: 0;
+}
+#movie .thum a {
+	display: block;
+	overflow: hidden;
+	position: relative;
+}
+#movie .thum a img {
+	opacity: 0.5;
+	position: relative;
+	transition: all 0.5s ease;
+}
+#movie .thum a:hover img {
+	opacity: 1;
+	transform: scale(1.2);
+}
+#movie .thum a::after {
+	content: "\f144";
+	font: 500 80px/1 "FontAwesome";
+	text-align: center;
+	display: block;
+	width: 100%;
+	height: 80px;
+	margin: auto;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+}
+#movie .link {
+	font-size: 2rem;
+	font-weight: 600;
+	margin-top: 0;
+}
+#movie .link span {
+	text-shadow: 0 0 3px #b9a49b, 0 0 3px #fff, 0 0 5px #fff;
+}
+.recipe .recipe-header {
+	display: flex;
+	align-items: flex-start;
+	flex-wrap: wrap;
+}
+.recipe .recipe-header > figure,
+.recipe .recipe-header > div {
+	width: 33.333%;
+}
+.recipe .recipe-header > figure {
+	margin: 0;
+	padding-right: 20px;
+	position: relative;
+}
+.recipe .recipe-header > figure img {
+	border-radius: 5%;
+}
+.recipe .recipe-header > figure::after {
+	content: "";
+	background: url(/img/logo_landscape.webp) no-repeat 0 0 / cover;
+	display: block;
+	width: 270px;
+	height: 75px;
+	position: absolute;
+	right: -20px;
+	bottom: -20px;
+}
+.recipe .recipe-header > div {
+	padding-left: 20px;
+}
+.recipe .recipe-header > div .title-sub2 {
+	margin-top: 0;
+}
+.recipe-table {
+	table-layout: fixed;
+}
+.recipe-table th,
+.recipe-table td {
+	font-size: 1.4rem;
+	padding: 5px 10px;
+	border: solid 1px #31cde0;
+}
+.recipe-table th {
+	font-weight: 600;
+	background-color: #b5ebf1;
+}
+.recipe-table td {
+	background-color: #fff;
+	text-align: right;
+}
+.recipe-table thead th {
+	text-align: center;
+}
+.recipe-table tr > *:first-child {
+	width: 120px;
+}
+
+
+
+/* -- Private movie
+-------------------------------------------------------------------------------- */
+.post-password-form p {
+	text-align: center;
+}
+.post-password-form p + p {
+	font-size: 0;
+	margin-top: 30px;
+}
+.post-password-form input[type="password"] {
+	font-size: 1.6rem;
+	line-height: 1.5;
+	box-sizing: border-box;
+	padding: 10px;
+	border: solid 1px #ccc;
+	box-shadow: 0 0 5px #aaa;
+}
+.post-password-form input[type="submit"] {
+	font-size: 1.8rem;
+	font-weight: 600;
+	color: #31cde0;
+	background-color: rgba(49, 205, 224, 0.1);
+	text-align: center;
+	display: inline-block;
+	overflow: hidden;
+	width: 100px;
+	margin: 0 20px;
+	padding: 6px 0;
+	cursor: pointer;
+	border: solid 4px #31cde0;
+	border-radius: 10px;
+	position: relative;
+}
+
+
+
+/* -- Rice flour bread
+-------------------------------------------------------------------------------- */
+.rice_movie_schedule {
+	display: flex;
+	justify-content: space-between;
+}
+.rice_movie_schedule li {
+	width: calc(33.333% - 40px);
+}
+.rice_movie_schedule h4 em {
+	font-size: 1.6rem;
+	font-weight: 600;
+	color: #fff;
+	background-color: #31cde0;
+	display: inline-block;
+	padding: 2px 10px;
+	position: relative;
+	top: -4px;
+}
+#rice .price-list td b {
+	font-size: 1.2rem;
+	color: #594a2a;
+}
+.videolesson-form {
+	text-align: center;
+	margin-top: 100px;
+}
+.wp-video {
+	margin: auto;
+}
+
+
+
+/* -- Media query
+-------------------------------------------------------------------------------- */
+@media screen and (min-width: 1600px) {
+	.vis-title {
+		left: 200px;
+	}
+}
+@media screen and (max-width: 1400px) {
+	.col {
+		columns: auto 3;
+	}
+	#profile #career figure {
+		margin-top: -25px;
+	}
+	.course-wrap div figure {
+		margin-bottom: 0;
+		position: relative;
+		z-index: 2;
+	}
+	.course-wrap figure + p {
+		width: calc(100% - 50px);
+		margin: -30px 0 0 50px;
+		padding-top: 55px;
+		position: relative;
+	}
+	#flow .course-wrap div figure {
+		width: 100%;
+	}
+	#flow .course-wrap div p {
+		float: none;
+		width: 100%;
+	}
+	#movie div,
+	#movie::after {
+		width: calc(33.333% - 40px);
+	}
+	#movie::before {
+		display: none;
+	}
+	.recipe .recipe-header > figure {
+		width: 100%;
+		padding: 0 25% 50px;
+	}
+	.recipe .recipe-header > figure::after {
+		right: 15%;
+		bottom: 25px;
+	}
+	.recipe .recipe-header > div {
+		width: 50%;
+	}
+	.recipe .recipe-header > div .title-sub2 {
+		margin-top: 0;
+	}
+}
+@media screen and (max-width: 1000px) {
+	main > section,
+	.section-block {
+		margin: 100px 50px;
+	}
+	.course-wrap div,
+	.course-wrap > p {
+		width: 100%;
+	}
+	.course-wrap figure + p {
+		width: auto;
+		max-width: inherit;
+		margin-left: 250px;
+	}
+	.col {
+		columns: inherit;
+	}
+	#free div:not(:only-of-type) {
+		width: 100%;
+		padding-left: 0;
+		border-left: none;
+	}
+	#free div:nth-of-type(n+2) {
+		margin-top: 50px;
+		padding-top: 50px;
+		border-top: solid 1px #31cde0;
+	}
+	#movie div,
+	#movie::after {
+		width: calc(33.333% - 20px);
+	}
+}

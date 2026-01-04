@@ -60,7 +60,8 @@ $customNotFoundHandler = function (
 	$response = $app->getResponseFactory()->createResponse(404);
 	// 最小でOK。必要になったら make_seo($request, [...]) など渡せば拡張可
 	return $view->render($response, '404.twig', [
-		'message' => 'ページが見つかりません。',
+		'title_main' => 'Error 404',
+		'title_sub' => 'File Not Found.',
 	]);
 };
 // 404 を差し替え

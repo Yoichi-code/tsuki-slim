@@ -1,7 +1,14 @@
 {% extends 'layout.twig' %}
+{% set title = 'Lesson Movie' %}
+{% set page = 'lesson_movie' %}
 
 {% block content %}
-	<h1>Lesson Movie</h1>
+	<div id="kv">
+		<h1 class="vis-title" lang="en"><i>Private movie</i>Xmasレッスン</h1>
+		<figure class="vis-img"><img src="https://media.tsukipan.site/2021/10/006-720x720.jpg" fetchpriority="high"></figure>
+	</div>
 	<hr>
-	<p>{{ message }}</p>
+	<section>
+		<p>{{ message }}</p>
+	</section>
 {% endblock %}

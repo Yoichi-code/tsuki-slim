@@ -20,6 +20,14 @@
 <meta property="og:type" content="{{ seo.type ?? 'website' }}">
 {% endif %}
 
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fredericka+the+Great&display=swap">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" media="(min-width: 768px)" href="/css/common_pc.css">
+<link rel="stylesheet" media="(max-width: 767px)" href="/css/common_sp.css">
+<link rel="stylesheet" media="(min-width: 768px)" href="/css/{{ page == 'index' ? 'index' : 'lower' }}_pc.css">
+<link rel="stylesheet" media="(max-width: 767px)" href="/css/{{ page == 'index' ? 'index' : 'lower' }}_sp.css">
+
 <!-- SEO structuredData START -->
 {% if seo.structuredData is defined %}
 <script type="application/ld+json">

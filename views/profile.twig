@@ -1,7 +1,18 @@
 {% extends 'layout.twig' %}
+{% set title = 'Profile' %}
+{% set page = 'profile' %}
 
 {% block content %}
-	<h1>profile</h1>
+	<div id="kv">
+		<h1 class="vis-title" lang="en"><i>Profile</i>TSUKIパン教室の講師紹介</h1>
+		<figure class="vis-img"><img src="/img/vis_provisional.webp" alt="TSUKIパン教室"></figure>
+		<p class="vis-caption">「TSUKIパン教室」講師の月森みよ子です。<br>
+		苗字が変わっているとよく言われますが本名です。<br>
+		趣味はパン作りとガーデニング。<br>
+		2020年から浦和レッズのにわかファンデビュー(w</p>
+	</div>
 	<hr>
-	<p>{{ message }}</p>
+	<section>
+		<p>{{ message }}</p>
+	</section>
 {% endblock %}
